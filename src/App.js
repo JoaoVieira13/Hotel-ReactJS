@@ -1,11 +1,11 @@
-import './App.css';
+import './App.scss';
 import React from "react";
-import Navbar from './components/Navbar/Navbar';
+import HomeScreen from './Screens/HomeScreen/HomeScreen';
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      <HomeScreen />
     </div>
   );
 }

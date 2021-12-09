@@ -1,0 +1,39 @@
+.container{
+    text-align: center;
+    color: black;
+    position: relative;
+
+  .top-left {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: rgb(104, 88, 88);
+  }
+
+  .center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: 92%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+  }
+
+  .description{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-weight: 400;
+    transform: translate(-50%, -50%);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16x;
+  }
+}
