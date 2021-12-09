@@ -1,14 +1,15 @@
 import React from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import BackgroundImage from "../../components/BackgroundImage/BackgroundImage"
-import FindRooms from "../../components/FindRooms/FindRooms";
+import Cards from "../../components/Cards/Cards";
+
 
 function HomeScreen() {
     return (
-      <div className="App">
+      <div className="HomeScreen">
         <Navbar />
         <BackgroundImage />
-        <FindRooms />
+        <Cards />
       </div>
     );
   }

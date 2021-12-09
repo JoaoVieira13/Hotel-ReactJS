@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from '../../Assets/Images/bedroom.jpg'
 import './image.scss'
+import FindRooms from '../FindRooms/FindRooms';
 
 function BackgroundImage() {
     
@@ -16,7 +17,9 @@ function BackgroundImage() {
       Hospitalidade é uma arte e o Pelourinho Hotel fez dela 
       <p> uma obra-prima e transformou-a em personalização espontânea. </p>
       </div>
+      <FindRooms />
     </div>
+    
     );
   }
   

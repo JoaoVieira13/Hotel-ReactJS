@@ -1,0 +1,25 @@
+.container{
+    .text{
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 40px;
+        font-family: sans-serif;
+    }
+    .card{
+        width: 261px;
+        height: 272px;
+        margin-left: 60px;
+        margin-top: 50px;
+        cursor: pointer;
+    .image{
+        width: 259px;
+        border-radius: 10px 10px 0 0;
+        }
+        .pousada{
+            border:1px solid rgb(199, 199, 199);
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+            background-color: #E2E8F0;
+        }
+    }
+}
