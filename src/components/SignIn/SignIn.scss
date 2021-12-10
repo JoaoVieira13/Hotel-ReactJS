@@ -1,0 +1,84 @@
+.alts{
+        display: flex;
+        margin-left: 60px;
+        margin-right: 60px;
+        background-color: #e2e9f3;
+.img{
+    width: 50%;
+    }
+    .texto{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        left: 23%;
+        margin-top: 40px;
+    }
+    .box{
+        display: flex;
+        .icons{
+            margin-left: 25px;
+            margin-top: 20px;
+            margin-bottom: 40px;
+            cursor: pointer;
+            width: 27px;
+            height: 27px;
+        }
+    }
+}
+
+.input{
+    width: 320px;
+    height: 30px;
+    border-radius: 10px ;
+    background-color: #e7edf7;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    margin-bottom: 20px;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.submit{
+    border-radius: 10px;
+    margin: 20px;
+    width: 120px;
+    height: 30px;
+    margin-top: 10px;
+    background-color: #e5ebf5;
+    border:none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    cursor: pointer;
+}
+
+span{
+    margin-bottom: 10px;
+}
+
+.login{
+    position: relative;
+    right: 12%;
+    font-size: 28px;
+    font-weight: bold;
+    font-family: sans-serif;
+    margin-bottom: 20px;
+}
+
+.tudo{
+    position: relative;
+    left: 15%;
+}
+
+.forgot{
+    font-size: 14px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.buttons{
+    display: flex;
+    margin-top: 15px;
+}
