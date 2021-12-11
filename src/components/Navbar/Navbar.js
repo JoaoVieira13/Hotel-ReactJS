@@ -6,11 +6,11 @@ const Navbar = () => {
         <div className="right">
             <a className="name" href="/">PelourinhoHotel</a>
             <div className="options">
-                <a href="#">Home</a>
+                <a href="/">Home</a>
                 <a href="#">About</a>
                 <a href="#">Rooms</a>
                 <a href="#">Contact</a>
-                <a href="#">Login</a>
+                <a href="/login">SignIn</a>
             </div>
         </div>
     );

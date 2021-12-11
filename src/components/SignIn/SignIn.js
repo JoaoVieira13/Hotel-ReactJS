@@ -29,15 +29,15 @@ function SignIn() {
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)} className="form">
                     <span>Email</span>
-                    <input className="input" placeholder="  @gmail.com" {...register("Email", { required: true })} />
+                    <input className="input" placeholder="@gmail.com" {...register("Email", { required: true })} />
                     <span>Password</span>
-                    <input className="input" placeholder="  Password" {...register("Password", { required: true })} />
+                    <input className="input" placeholder="Password" {...register("Password", { required: true })} />
                     {errors.exampleRequired && <p>This field is required</p>}
                     <span class="forgot">Forgot Password?</span>
                     <div className="buttons">
                         <button type="submit" className="submit">Login</button>
                         <p>or</p>
-                        <button type="submit" className="submit">Register</button>
+                        <a href="#"><button className="submit">Register</button></a>
                     </div>
                 </form>
             </div>

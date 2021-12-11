@@ -1,13 +1,13 @@
 import './App.scss';
 import React from "react";
-import HomeScreen from './Screens/HomeScreen/HomeScreen';
-import SignInScreen from './Screens/SignInScreen/SignInScreen';
+import Router from './router';
+
 
 function App() {
   return (
-    <div className="App">
-      <SignInScreen />
-    </div>
+    <>
+      <Router />
+    </>
   );
 }
 
