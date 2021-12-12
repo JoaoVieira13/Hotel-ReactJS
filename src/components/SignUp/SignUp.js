@@ -1,15 +1,20 @@
 import React from "react";
-import "./SignIn.scss"
-import Room from '../../Assets/Images/room.jpg'
+import "./SignUp.scss"
+import Hotel from '../../Assets/Images/hotel.jpg'
 import FeatherIcon from 'feather-icons-react';
 import { useForm } from "react-hook-form";
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-function SignIn() {
+function SignUp() {
+
     const validationSchema = Yup.object().shape({
         password: Yup.string()
-            .required('❌ Password is required'),
+            .required('❌ Password is required')
+            .min(6, ' Password must be at least 6 characters'),
+        confirmPassword: Yup.string()
+            .required('❌ Confirm Password is required')
+            .oneOf([Yup.ref('password')], 'Passwords must match'),
         email: Yup.string()
             .required('❌ Email is required')
     });
@@ -18,6 +23,7 @@ function SignIn() {
     const { register, handleSubmit, formState } = useForm(formOptions);
     const { errors } = formState;
 
+
     function onSubmit(data) {
         alert('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
         return false;
@@ -25,11 +31,11 @@ function SignIn() {
 
     return (
         <div className="alts">
-            <img src={Room} alt="Room"
-                height={560} className="img" />
+            <img src={Hotel} alt="Room"
+                height={610} className="image" />
             <div className="tudo">
                 <div class="texto">
-                    <div className="login">Login to Pelourinho</div>
+                    <div className="login">SignUp to Pelourinho</div>
                     <div className="box">
                         <div className="icons">
                             <div className="icon"><FeatherIcon icon="mail" size="25" /></div>
@@ -49,15 +55,14 @@ function SignIn() {
                     <span>Password</span>
                     <input placeholder="Password" name="password" type="password" {...register('password')} className={`input ${errors.password ? 'is-invalid' : ''}`} />
                     <span className="invalid-feedback">{errors.password?.message}</span>
-                    <span class="forgot">Forgot Password?</span>
-                    <div className="buttons">
-                        <button type="submit" className="submit">Login</button>
-                        <p>or</p>
-                        <button className="submit"><a href="/auth/register">Register</a></button>
-                    </div>
+                    <span>Repeat Password</span>
+                    <input placeholder="Password" name="confirmPassword" type="password" {...register('confirmPassword')} className={`input ${errors.confirmPassword ? 'is-invalid' : ''}`} />
+                    <span className="invalid-feedback">{errors.confirmPassword?.message}</span>
+                    <span className="forget"><a href="/auth/login">You already have account?</a></span>
+                    <a href="/auth/register"><button className="register">Register</button></a>
                 </form>
             </div>
-        </div>
+        </div >
     );
 }
-export default SignIn;
+export default SignUp;
