@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen/HomeScreen';
+import RoomScreen from './Screens/RoomScreen/RoomScreen';
 import SignInScreen from './Screens/SignInScreen/SignInScreen';
 import SignUpScreen from './Screens/SignUpScreen/SignUpScreen'
 
@@ -11,6 +12,7 @@ function Router() {
                 <Route path="/" element={<HomeScreen />} />
                 <Route path="/auth/login" element={<SignInScreen />} />
                 <Route path="/auth/register" element={<SignUpScreen />} />
+                <Route path="/bedroom" element={<RoomScreen />} />
             </Routes>
         </BrowserRouter>
     );

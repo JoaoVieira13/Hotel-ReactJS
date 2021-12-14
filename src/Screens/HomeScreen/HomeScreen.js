@@ -12,7 +12,6 @@ function HomeScreen() {
       <BackgroundImage />
       <p className="text">Entire rooms of choice</p>
       <Cards />
-      <Cards />
       <Footer />
     </>
   );

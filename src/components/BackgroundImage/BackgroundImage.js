@@ -10,15 +10,14 @@ function BackgroundImage() {
       <img src={Image} alt="Logo" className="center"
         height={500}
       />
-      <div className="top-left">ENJOY THE BEST NIGHTS
-        <p>OF YOUR LIFE.</p>
-      </div>
-      <div className='description'>
-        Hospitalidade é uma arte e o Pelourinho Hotel fez dela
-        <p> uma obra-prima e transformou-a em personalização espontânea. </p>
+      <div>
+        <p className="top-left">ENJOY THE BEST NIGHTS <br />
+          OF YOUR LIFE.</p>
+        <p className="description">Hospitalidade é uma arte e o Pelourinho Hotel fez dela
+          <br /> uma obra-prima e transformou-a em personalização espontânea.</p>
       </div>
       <FindRooms />
-    </div>
+    </div >
 
   );
 }

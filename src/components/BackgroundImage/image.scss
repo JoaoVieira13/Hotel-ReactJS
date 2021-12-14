@@ -29,11 +29,12 @@
 
   .description{
     position: absolute;
-    top: 50%;
+    top: 45%;
     left: 50%;
     font-weight: 400;
     transform: translate(-50%, -50%);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16x;
+    line-height: 25px;
   }
 }
