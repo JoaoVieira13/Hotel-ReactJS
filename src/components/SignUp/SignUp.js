@@ -5,8 +5,21 @@ import FeatherIcon from 'feather-icons-react';
 import { useForm } from "react-hook-form";
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import api from "../../Services/api";
 
 function SignUp() {
+
+    const onSubmit = (data) => {
+        const newUser = {
+            email: data.email,
+            password: data.password,
+        }
+        api
+            .post("/auth/register", newUser)
+            .catch((err) => {
+                console.error("This email already exists!" + err);
+            });
+    }
 
     const validationSchema = Yup.object().shape({
         password: Yup.string()
@@ -22,12 +35,6 @@ function SignUp() {
     const formOptions = { resolver: yupResolver(validationSchema) };
     const { register, handleSubmit, formState } = useForm(formOptions);
     const { errors } = formState;
-
-
-    function onSubmit(data) {
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
-        return false;
-    }
 
     return (
         <div className="alts">
@@ -50,7 +57,7 @@ function SignUp() {
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)} className="form">
                     <span>Email</span>
-                    <input placeholder="@gmail.com" className="input" placeholder="@gmail.com" {...register("email", { required: true })} />
+                    <input placeholder="@gmail.com" className="input" placeholder="@gmail.com" {...register("email", { required: true, unique: true })} />
                     <span className="invalid-feedback">{errors.email?.message}</span>
                     <span>Password</span>
                     <input placeholder="Password" name="password" type="password" {...register('password')} className={`input ${errors.password ? 'is-invalid' : ''}`} />

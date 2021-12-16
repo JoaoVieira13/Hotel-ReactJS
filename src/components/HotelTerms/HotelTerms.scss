@@ -1,0 +1,41 @@
+.terms{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+
+}
+
+.overview{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.apiInfo{
+    display: flex;
+    text-align: justify;
+    width: 70%;
+    background-color: #EBEBEB;
+    border-radius: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+    line-height: 20px;
+}
+
+.termsCovid{
+    text-align: justify;
+    width: 70%;
+    line-height: 20px;
+    background-color: #EBEBEB;
+    border-radius: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border: 1px solid black;
+    margin-top: 40px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.healthy{
+    text-align: center;
+}

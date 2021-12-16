@@ -12,7 +12,7 @@ function Router() {
                 <Route path="/" element={<HomeScreen />} />
                 <Route path="/auth/login" element={<SignInScreen />} />
                 <Route path="/auth/register" element={<SignUpScreen />} />
-                <Route path="/bedroom" element={<RoomScreen />} />
+                <Route path="/quarto/:quartoId" element={<RoomScreen />} />
             </Routes>
         </BrowserRouter>
     );

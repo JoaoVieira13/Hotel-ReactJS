@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./SignIn.scss"
 import Room from '../../Assets/Images/room.jpg'
 import FeatherIcon from 'feather-icons-react';
 import { useForm } from "react-hook-form";
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import AuthContext from "../../contexts/AuthContext";
 
 function SignIn() {
+
     const validationSchema = Yup.object().shape({
         password: Yup.string()
             .required('❌ Password is required'),
@@ -17,10 +19,10 @@ function SignIn() {
     const formOptions = { resolver: yupResolver(validationSchema) };
     const { register, handleSubmit, formState } = useForm(formOptions);
     const { errors } = formState;
+    const { sign } = useContext(AuthContext);
 
-    function onSubmit(data) {
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
-        return false;
+    async function handleSignIn(data) {
+        await sign(data)
     }
 
     return (
@@ -42,7 +44,7 @@ function SignIn() {
                         </div>
                     </div>
                 </div>
-                <form onSubmit={handleSubmit(onSubmit)} className="form">
+                <form onSubmit={handleSubmit(handleSignIn)} className="form">
                     <span>Email</span>
                     <input placeholder="@gmail.com" className="input" placeholder="@gmail.com" {...register("email", { required: true })} />
                     <span className="invalid-feedback">{errors.email?.message}</span>

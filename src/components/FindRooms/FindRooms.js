@@ -19,9 +19,7 @@ function FindRooms() {
                     <div className="icon"><FeatherIcon icon="calendar" size="24" /></div>
                     <div className="location">Check out <span>14 Jun 2021</span></div>
                 </div>
-                <div className="button">
-                    <button>Search</button>
-                </div>
+                <button className="butt">Search</button>
             </div>
         </div>
     );
