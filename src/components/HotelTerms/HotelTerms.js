@@ -1,20 +1,9 @@
 import React from "react";
-import './HotelTerms.scss'
+import './HotelTerms.scss';
 
 function HotelTerms() {
     return (
         <div className="terms">
-            <p className="overview">Bedroom Overview</p>
-            <div className="apiInfo">
-                <p>Information: Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    Information: Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                    labore et dolore magna aliqua.  </p>
-            </div>
             <div className="termsCovid">
                 <p className="healthy">Healthy Stays Certified</p>
                 <p>To help you sleep easier, this hotel has received a performance-based

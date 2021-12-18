@@ -1,8 +1,8 @@
-.title{
+.title2{
     font-size: 26px;
     font-weight: bold;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 40px;
 }
 
@@ -82,4 +82,29 @@
 .cert{
     display: flex;
     justify-content: center;
+}
+
+.overview{
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.apiInfo{
+    display: flex;
+    justify-content: center;
+    text-align: justify;
+    width: 70%;
+    background-color: #EBEBEB;
+    border-radius: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+    line-height: 20px;
+    margin-top: 10px;
+}
+
+.teste{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

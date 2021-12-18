@@ -6,8 +6,11 @@ import { useForm } from "react-hook-form";
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import api from "../../Services/api";
+import { useNavigate } from "react-router-dom";
 
 function SignUp() {
+
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
         const newUser = {
@@ -16,8 +19,13 @@ function SignUp() {
         }
         api
             .post("/auth/register", newUser)
+            .then(() => {
+                alert("Registration Completed Successfully!")
+                navigate('/auth/login');
+            })
             .catch((err) => {
-                console.error("This email already exists!" + err);
+                console.log(err)
+                alert("This Email is Already Registered!");
             });
     }
 
@@ -66,7 +74,7 @@ function SignUp() {
                     <input placeholder="Password" name="confirmPassword" type="password" {...register('confirmPassword')} className={`input ${errors.confirmPassword ? 'is-invalid' : ''}`} />
                     <span className="invalid-feedback">{errors.confirmPassword?.message}</span>
                     <span className="forget"><a href="/auth/login">You already have account?</a></span>
-                    <a href="/auth/register"><button className="register">Register</button></a>
+                    <button className="register">Register</button>
                 </form>
             </div>
         </div >
