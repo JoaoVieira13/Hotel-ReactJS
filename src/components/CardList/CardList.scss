@@ -1,0 +1,107 @@
+.cardContainer{
+    display: flex;
+    height: 200px;
+    background-color: black;
+    margin-bottom: 30px;
+    border-radius: 5px;
+    background-color: #FFFF;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.cardCenter{
+    display: flex;
+    margin-left: 60px;
+    margin-top: 40px;
+}
+.imgList{
+    width: 25%;
+    border-radius: 5px 0 0 5px;
+}
+
+.PelourinhoHotel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 230px;
+    height: 35px;
+    background-color: #EEF2F4;
+}
+
+.cardListInfo{
+    margin-top: 10px;
+    margin-left: 25px;
+}
+
+.bedroomName{
+    font-weight: bold;
+    font-size: 22px;
+    font-family: sans-serif;
+    margin-left: 5px;
+}
+.bedroomNumber{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    font-size: 14px;
+    font-family: sans-serif;
+    margin-left: 8px;
+}
+
+.rightCard{
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+    margin-left: 35%;
+}
+
+.priceBedroom{
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.offerButton{
+    background-color: orange;
+    border: none;
+    height: 35px;
+    width: 90px;
+    border-radius: 5px;
+    color: #FFFF;
+    font-weight: bold;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.alignType{
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    font-family: sans-serif;
+    text-align: justify;
+    margin-top: 15px;
+}
+
+.centerCenter{
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+}
+
+.arrayList{
+    display: flex;
+    justify-content: center;
+}
+
+.element{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    border-radius: 7px;
+    border: none;
+    background-color: orange;
+    color: white;
+}

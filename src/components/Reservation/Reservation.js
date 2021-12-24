@@ -18,7 +18,7 @@ function Reservation() {
 
     useEffect(() => {
         api
-            .get('/quartos/quarto/61bbcdde1d5f4e4d8b24dcc2')
+            .get('/quartos/quarto/61c60c8e2c502829b60a3fa1')
             .then(function (response) {
                 setQuartos(response.data);
 
@@ -34,7 +34,7 @@ function Reservation() {
     const style = {
         position: 'absolute',
         top: '50%',
-        left: '70%',
+        left: '75%',
         transform: 'translate(-50%, -50%)',
         width: 100,
     };

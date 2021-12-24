@@ -1,0 +1,50 @@
+.searchBedroom{
+    width: 20%;
+    margin-left: 5%;
+    height: 230px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.searchBed{
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+    color: black;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 16px;
+}
+
+.searchInputs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputsSearch{
+    display: flex;
+    align-self: center;
+    margin-top: 15px;
+    text-align: center;
+    width: 90%;
+    height: 27px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.searchBut{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    background-color: orange;
+}

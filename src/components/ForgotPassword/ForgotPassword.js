@@ -6,6 +6,7 @@ import './ForgotPassword.scss'
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
+import api from "../../Services/api";
 
 const style = {
     position: 'absolute',
@@ -22,6 +23,22 @@ const style = {
 
 function ForgotPassword() {
 
+    const onSubmit = (data) => {
+        const sendEmail = {
+            email: data.email,
+        }
+
+        api
+            .post("/auth/passwordReset", sendEmail)
+            .then(function () {
+                alert("Email Sent Successfuly!")
+            })
+
+            .catch(function () {
+                alert("This Email Does Not Exists")
+            })
+    }
+
     const validationSchema = Yup.object().shape({
         email: Yup.string()
             .required('❌ Email is required')
@@ -33,10 +50,6 @@ function ForgotPassword() {
     const formOptions = { resolver: yupResolver(validationSchema) };
     const { register, handleSubmit, formState } = useForm(formOptions);
     const { errors } = formState;
-
-    const onSubmit = (data) => {
-        console.log(data)
-    }
 
     return (
         <div>
@@ -56,7 +69,7 @@ function ForgotPassword() {
                         After sending, check your inbox.
                     </div>
                     <Typography id="modal-modal-description">
-                        <form onSubmit={handleSubmit(onSubmit)} className="form2">
+                        <form onSubmit={handleSubmit(onSubmit)} className="form2" method="POST">
                             <input placeholder="@gmail.com" className="input" placeholder="@gmail.com" {...register("email", { required: true })} />
                             <span className="invalid-feedback">{errors.email?.message}</span>
                             <button className="send">Send</button>

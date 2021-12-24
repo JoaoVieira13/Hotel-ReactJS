@@ -41,6 +41,27 @@ function Cards() {
                     );
                 })}
             </div>
+            <div className="alinhar">
+                {quartos.slice(4, 8).map((quarto) => {
+                    let id = quarto._id;
+                    return (
+
+                        <Link to={'/quartos/quarto/' + id}> <div className="card">
+                            <div className="pousada">
+                                <img src={Image} alt="Logo" className="image"
+                                    height={272}
+                                />
+                                <div className="info">
+                                    <p>Price: {quarto.valueNight}</p>
+                                    <p>Type: {quarto.type}</p>
+                                    <p>Beds Number: {quarto.bedroomsNumber}</p>
+                                </div>
+                            </div>
+                        </div>
+                        </Link>
+                    );
+                })}
+            </div>
         </>
     );
 }

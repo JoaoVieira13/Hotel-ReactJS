@@ -1,0 +1,15 @@
+.reserveButton{
+    display: flex;
+    color: #B51148;
+    padding: 5px;
+    border-radius: 10px;
+    border: none;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.dateComponents{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

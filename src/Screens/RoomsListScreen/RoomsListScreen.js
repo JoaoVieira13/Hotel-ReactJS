@@ -1,15 +1,16 @@
 import React from "react";
+import CardList from "../../components/CardList/CardList";
 import Navbar from "../../components/Navbar/Navbar";
-import Reservation from "../../components/Reservation/Reservation";
 import Footer from "../../components/Footer/Footer";
-function RoomScreen() {
+
+function RoomsListScreen() {
     return (
         <>
             <Navbar />
-            <Reservation />
+            <CardList />
             <Footer />
         </>
-    );
+    )
 }
 
-export default RoomScreen;
+export default RoomsListScreen;
