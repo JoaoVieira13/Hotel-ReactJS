@@ -9,6 +9,7 @@ import api from "../../Services/api";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from "react-router-dom"
 
 function SignUp() {
 
@@ -87,7 +88,7 @@ function SignUp() {
                         <span>Repeat Password</span>
                         <input placeholder="Password" name="confirmPassword" type="password" {...register('confirmPassword')} className={`input ${errors.confirmPassword ? 'is-invalid' : ''}`} />
                         <span className="invalid-feedback">{errors.confirmPassword?.message}</span>
-                        <span className="forget"><a href="/auth/login">You already have account?</a></span>
+                        <span className="forget"><Link to="/login">You already have account?</Link></span>
                         <button className="register">Register</button>
                     </form>
                 </div>

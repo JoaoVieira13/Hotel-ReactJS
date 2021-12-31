@@ -1,10 +1,14 @@
 .reserveButton{
     display: flex;
-    color: #B51148;
+    align-self: center;
     padding: 5px;
     border-radius: 10px;
     border: none;
-    margin-top: 5px;
+    margin-top: 10px;
+    width: 60px;
+    background-color: black;
+    color: white;
+    font-size: bold;
     cursor: pointer;
 }
 
@@ -12,4 +16,27 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+}
+
+.CheckRoom{
+    display: flex;
+    flex-direction: column;
+}
+
+.CheckText{
+    font-weight: bold;
+    font-size: 12px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.totalDays{
+    margin-top: 15px;
+    text-align: center;
+    font-size: 13px;
+}
+
+.inputDate{
+    margin-top: -5px;
 }

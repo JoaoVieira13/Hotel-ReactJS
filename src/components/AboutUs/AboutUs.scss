@@ -1,0 +1,65 @@
+.row{
+    display: flex;
+    justify-content: center;
+  }
+
+  .cards {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+  }
+
+  .cardmid{
+    margin-top: 8px;
+    margin-bottom: 8px;
+    display: flex;
+    width: 350px;
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  
+  .about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+  }
+  
+  .container {
+    padding: 0 16px;
+  }
+  
+  .title {
+    color: grey;
+  }
+  
+  .buttonAbout {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    margin-top: 20px;
+    width: 100%;
+  }
+  
+  .button:hover {
+    background-color: #555;
+  }
+
+  .imgAbout{
+      width: 100%;
+      height: 350px;
+  }
+
+.ourTeam{
+    margin-top: 20px;
+    text-align: center;
+}

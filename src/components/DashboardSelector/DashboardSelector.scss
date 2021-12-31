@@ -1,0 +1,57 @@
+.dashboardBar{
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+    min-height: 100%;
+    background-color: #212337;
+}
+
+.adminImg{
+    width: 50%;
+    align-self: center;
+    margin-top: 30px;
+}
+
+.getTime{
+    display: flex;
+    flex-direction: column;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    font-size: 18px;
+    line-height: 15px;
+}
+
+.welcome{
+    font-size: 18px;
+    font-family: sans-serif;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.ul {
+    text-align: center;
+    width: 100%;
+    background-color: #212337;
+    cursor: pointer;
+    color: white;
+    margin-top: 25px;
+  }
+  
+  .li {
+    padding: 8px;
+    color: wheat;
+  }
+
+  .li:hover {
+    background-color: #555;
+  }
+
+  hr{
+    height: 0.5px;
+    background-color: black;
+    border: none;
+}

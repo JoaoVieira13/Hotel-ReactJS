@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./SignIn.scss"
 import Room from '../../Assets/Images/room.jpg'
 import FeatherIcon from 'feather-icons-react';
@@ -13,6 +13,8 @@ import { Link } from 'react-router-dom';
 
 function SignIn() {
 
+    const [login, setLogin] = useState(false);
+
     const onSubmit = (data) => {
         const findUser = {
             email: data.email,
@@ -22,15 +24,42 @@ function SignIn() {
         api
             .post("/auth/login", findUser)
             .then(function () {
-                toast.success("Authentication Successfuly!")
+                toast.success("Authentication Successfuly!");
                 setTimeout(() => window.location.pathname = "/", 3000);
+                setLogin(true);
             })
 
             .catch(function (error) {
+                setLogin(false);
                 console.log(error);
                 toast.error("An Error Occurred!")
             })
     }
+
+    // useEffect(() => {
+    //     if (('jwt') !== undefined) {
+
+    //         api
+    //             .get("/auth/me", {
+    //                 headers: {
+    //                     "x-access-token": 
+    //                 }
+    //             })
+    //             .then(function (response) {
+    //                 setLogin(response.data.auth);
+    //                 setLoading(false)
+    //             })
+    //             .catch(function (error) {
+    //                 setLogin(false);
+    //                 setLoading(false)
+    //                 console.log(error)
+    //             })
+    //     } else setLoading(false)
+
+    //     return () => {
+    //         setLogin(false)
+    //     }
+    // }, [])
 
     const validationSchema = Yup.object().shape({
         password: Yup.string()
@@ -76,7 +105,7 @@ function SignIn() {
                     </div>
                     <form onSubmit={handleSubmit(onSubmit)} method="POST" className="form">
                         <span>Email</span>
-                        <input placeholder="@gmail.com" className="input" placeholder="@gmail.com" {...register("email", { required: true })} />
+                        <input placeholder="@gmail.com" className="input" {...register("email", { required: true })} />
                         <span className="invalid-feedback">{errors.email?.message}</span>
                         <span>Password</span>
                         <input placeholder="Password" name="password" type="password" {...register('password')} className={`input ${errors.password ? 'is-invalid' : ''}`} />
@@ -85,7 +114,7 @@ function SignIn() {
                         <div className="buttons">
                             <button type="submit" className="submit">Login</button>
                             <p>or</p>
-                            <button className="submit"><Link to="/auth/register">Register</Link></button>
+                            <button type="submit" className="submit"><Link to="/register">Register</Link></button>
                         </div>
                     </form>
                 </div>
@@ -93,4 +122,5 @@ function SignIn() {
         </>
     );
 }
+
 export default SignIn;

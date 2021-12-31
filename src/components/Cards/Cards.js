@@ -25,7 +25,7 @@ function Cards() {
                     let id = quarto._id;
                     return (
 
-                        <Link to={'/quartos/quarto/' + id}> <div className="card">
+                        <Link to={'/quarto/' + id}> <div className="card">
                             <div className="pousada">
                                 <img src={Image} alt="Logo" className="image"
                                     height={272}

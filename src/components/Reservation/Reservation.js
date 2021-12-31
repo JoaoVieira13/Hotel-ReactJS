@@ -7,36 +7,40 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import api from '../../Services/api';
 import HotelTerms from "../HotelTerms/HotelTerms";
+import { useParams } from "react-router-dom"
 
 function Reservation() {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
     const [quarto, setQuartos] = useState([]);
+    const { quartoId } = useParams()
 
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
+        // TEM QUE SER O QUE TÁ NA ROTA 
         api
-            .get('/quartos/quarto/61c60c8e2c502829b60a3fa1')
+            .get(`/quartos/quarto/${quartoId}`)
             .then(function (response) {
                 setQuartos(response.data);
-
-                if (response === true) {
-                    setLoading(true);
-                }
+                setLoading(false)
             })
             .catch(function (error) {
                 console.log(error);
+                setLoading(false)
             })
     }, []);
 
     const style = {
         position: 'absolute',
-        top: '50%',
-        left: '75%',
-        transform: 'translate(-50%, -50%)',
-        width: 100,
+        top: '40%',
+        left: '32%',
+        width: 300,
+        height: 270,
+        backgroundColor: "white",
+        borderRadius: 10,
+        opacity: 0.8
     };
 
     if (loading) {
@@ -52,7 +56,7 @@ function Reservation() {
                         height={500}
                     />
                     <div className="reserve">
-                        <button className="button">Make a Reservation</button>
+                        <button className="button">See Your Reservations</button>
                         <div className="line">
                             <p className="price"> {quarto.valueNight} EUR</p>
                             <p className="avg">avg/night</p>
