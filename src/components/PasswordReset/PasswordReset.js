@@ -9,7 +9,7 @@ function PasswordReset() {
 
     const onSubmit = (data) => {
         const newPassword = {
-            password: data.passowrd
+            password: data.password
         }
 
         api
