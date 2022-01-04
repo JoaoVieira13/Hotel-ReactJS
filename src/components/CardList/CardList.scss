@@ -1,6 +1,7 @@
 .cardContainer{
     display: flex;
     height: 200px;
+    width: 100%;
     background-color: black;
     margin-bottom: 30px;
     border-radius: 5px;
@@ -12,10 +13,12 @@
     display: flex;
     margin-left: 60px;
     margin-top: 40px;
+    width: 100%;
 }
 .imgList{
     width: 25%;
     border-radius: 5px 0 0 5px;
+    object-fit: cover;
 }
 
 .PelourinhoHotel{

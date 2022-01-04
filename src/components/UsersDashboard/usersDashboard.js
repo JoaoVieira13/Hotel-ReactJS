@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./usersDashboard.scss";
 import DashboardSelector from "../../components/DashboardSelector/DashboardSelector"
-import Users from "../../Assets/Images/admin.png"
 import api from "../../Services/api";
 import DeleteChangeUsers from '../DeleteChangeUsers/DeleteChangeUsers';
 import CreateUser from '../CreateUser/CreateUser';
@@ -32,7 +31,7 @@ function UsersDashboard() {
                         {users.map((user) => {
                             return (
                                 <div className='usersCard'>
-                                    <img className='userImg' src={Users} />
+                                    <img className='userImg' src={user.image} />
                                     <div className='usersCol'>
                                         <span>UserID: {user._id}</span>
                                         <span>UserEmail: {user.email}</span>

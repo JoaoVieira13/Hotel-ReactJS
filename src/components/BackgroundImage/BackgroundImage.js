@@ -7,8 +7,7 @@ function BackgroundImage() {
   return (
     <div class="container">
       <img src={Image} alt="Logo" className="center"
-        height={600}
-      />
+        height={600} />
       <div>
         <p className="top-left">ENJOY THE BEST NIGHTS <br />
           OF YOUR LIFE.</p>

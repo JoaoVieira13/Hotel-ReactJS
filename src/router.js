@@ -9,6 +9,7 @@ import PasswordResetScreen from './Screens/PasswordResetScreen/PasswordResetScre
 import AboutScreen from './Screens/AboutScreen/About';
 import ContactScreen from './Screens/ContactScreen/ContactScreen';
 import DashboardScreen from './Screens/DashboardScreen/DashboardScreen';
+import DashboardBedroomsScreen from './Screens/DashboardBedroomsScreen/DashboardBedroomsScreen';
 
 function Router() {
     return (
@@ -22,7 +23,8 @@ function Router() {
                 <Route path="/passwordReset" element={<PasswordResetScreen />} />
                 <Route path="/about" element={<AboutScreen />} />
                 <Route path="/contact" element={<ContactScreen />} />
-                <Route path="/dashboard" element={<DashboardScreen />} />
+                <Route path="/dashboard/users" element={<DashboardScreen />} />
+                <Route path="/dashboard/bedrooms" element={<DashboardBedroomsScreen />} />
             </Routes>
         </BrowserRouter>
     );

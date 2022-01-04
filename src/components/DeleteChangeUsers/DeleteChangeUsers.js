@@ -5,6 +5,8 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { useForm } from "react-hook-form";
 import "./DeleteChangeUsers.scss";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const style = {
     position: 'absolute',
@@ -25,26 +27,6 @@ function DeleteChangeUsers({ userId }) {
     const handleClose = () => setOpen(false);
     const { register, handleSubmit } = useForm();
 
-    const onSubmit = (data) => {
-        const deleteUser = {
-            _id: data._id,
-            email: data.email,
-            password: data.password,
-            userType: data.userType,
-            reserve: data.reserve,
-        }
-
-        api
-            .delete(`/auth/login/${userId}`, deleteUser)
-            .then(function () {
-                console.log("apagado com sucesso!")
-            })
-            .catch(function (err) {
-                console.log(err)
-            })
-
-    }
-
     const onClick = (data) => {
         const changeUser = {
             email: data.email,
@@ -56,42 +38,58 @@ function DeleteChangeUsers({ userId }) {
             .put(`/auth/login/${userId}`, changeUser)
             .then(function () {
                 console.log("User alterado com sucesso!")
+                toast.success("User Changed!")
+                setTimeout(() => window.location.pathname = "/dashboard/users", 3000);
             })
             .catch(function (err) {
                 console.log(err)
+                toast.error("Error Changing User!")
             })
     }
 
 
     return (
-        <div className='doubleButton'>
-            <form>
-                <button className='deleteUser' type='submit' onClick={(() => api.delete(`/auth/login/${userId}`))} >Delete</button>
-            </form>
-            <button className='changeUser' onClick={handleOpen}>Change</button>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                    <div className="userData">
-                        Do you really want to change <br /> user data?
-                    </div>
-                    <Typography id="modal-modal-description">
-                        <form className="changedata" method='PUT' onSubmit={handleSubmit(onClick)}>
-                            <div className='marginTopform'>
-                                <input className="userInput" placeholder='Email' {...register("email", { required: true })} />
-                                <input className="userInput" type="password" placeholder='Password' {...register("password", { required: true })} />
-                                <input className="userInput" placeholder='User Type' {...register("userType", { required: true })} />
-                                <button type="submit" className='updateUserData'>Change</button>
-                            </div>
-                        </form>
-                    </Typography>
-                </Box>
-            </Modal>
-        </div>
+        <>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+            <div className='doubleButton'>
+                <form>
+                    <button className='deleteUser' type='submit' onClick={(() => api.delete(`/auth/login/${userId}`))} >Delete</button>
+                </form>
+                <button className='changeUser' onClick={handleOpen}>Change</button>
+                <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                >
+                    <Box sx={style}>
+                        <div className="userData">
+                            Do you really want to change <br /> user data?
+                        </div>
+                        <Typography id="modal-modal-description">
+                            <form className="changedata" method='PUT' onSubmit={handleSubmit(onClick)}>
+                                <div className='marginTopform'>
+                                    <input className="userInput" placeholder='Email' {...register("email", { required: true })} />
+                                    <input className="userInput" type="password" placeholder='Password' {...register("password", { required: true })} />
+                                    <input className="userInput" placeholder='User Type' {...register("userType", { required: true })} />
+                                    <button type="submit" className='updateUserData'>Change</button>
+                                </div>
+                            </form>
+                        </Typography>
+                    </Box>
+                </Modal>
+            </div>
+        </>
     )
 }
 

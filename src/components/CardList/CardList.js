@@ -125,7 +125,7 @@ function CardList() {
                             );
                         })}
                     </div>
-                    <SearchBedroom />
+                    {/* <SearchBedroom /> */}
                 </div>
                 <div className="paginationButton">
                     <button className="sortPrice" onClick={handleChangePagePrev}> Previous Page</button>

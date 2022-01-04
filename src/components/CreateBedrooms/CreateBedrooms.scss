@@ -1,0 +1,57 @@
+.createBedroomBox{
+    width: 30%;
+    margin-top: 6%;
+    margin-left: -20px;
+    height: 575px;
+    border-radius: 10px;
+    background-color: #212337;
+}
+
+.createBedroomTxt{
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: sans-serif;
+}
+
+.bedroommField{
+    margin-bottom: 15px;
+    height: 32px;
+    border-radius: 10px;
+    width: 70%;
+    text-align: center;
+}
+
+.bedroommSelect{
+    text-align: center;
+    width: 71%;
+    border-radius: 10px;
+    font-size: 12px;
+    height: 40px;
+}
+
+.createBedroomF{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.createBedroomB{
+    width: 25%;
+    height: 30px;
+    border-radius: 10px;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 25px;
+}
+
+.createBedroomB:hover{
+    background-color: rgb(0, 197, 0);
+}
