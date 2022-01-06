@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useContext } from "react";
 import "./SignIn.scss"
 import Room from '../../Assets/Images/room.jpg'
 import FeatherIcon from 'feather-icons-react';
@@ -10,56 +10,14 @@ import ForgotPassword from "../ForgotPassword/ForgotPassword";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from 'react-router-dom';
+import { Context } from "../../Context/AuthContext";
 
 function SignIn() {
+    const { login } = useContext(Context);
 
-    const [login, setLogin] = useState(false);
-
-    const onSubmit = (data) => {
-        const findUser = {
-            email: data.email,
-            password: data.password,
-        }
-
-        api
-            .post("/auth/login", findUser)
-            .then(function () {
-                toast.success("Authentication Successfuly!");
-                setTimeout(() => window.location.pathname = "/", 3000);
-                setLogin(true);
-            })
-
-            .catch(function (error) {
-                setLogin(false);
-                console.log(error);
-                toast.error("An Error Occurred!")
-            })
+    async function handleSignIn(data) {
+        await login(data)
     }
-
-    // useEffect(() => {
-    //     if (('jwt') !== undefined) {
-
-    //         api
-    //             .get("/auth/me", {
-    //                 headers: {
-    //                     "x-access-token": 
-    //                 }
-    //             })
-    //             .then(function (response) {
-    //                 setLogin(response.data.auth);
-    //                 setLoading(false)
-    //             })
-    //             .catch(function (error) {
-    //                 setLogin(false);
-    //                 setLoading(false)
-    //                 console.log(error)
-    //             })
-    //     } else setLoading(false)
-
-    //     return () => {
-    //         setLogin(false)
-    //     }
-    // }, [])
 
     const validationSchema = Yup.object().shape({
         password: Yup.string()
@@ -103,7 +61,7 @@ function SignIn() {
                             </div>
                         </div>
                     </div>
-                    <form onSubmit={handleSubmit(onSubmit)} method="POST" className="form">
+                    <form onSubmit={handleSubmit(handleSignIn)} method="POST" className="form">
                         <span>Email</span>
                         <input placeholder="@gmail.com" className="input" {...register("email", { required: true })} />
                         <span className="invalid-feedback">{errors.email?.message}</span>

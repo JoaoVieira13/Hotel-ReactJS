@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import "./CardList.scss";
-import Image from "../../Assets/Images/room.jpg"
 import api from "../../Services/api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import SearchBedroom from "../SearchBedroom/SearchBedroom";
 import Filters from "../Filters/Filters";
 
@@ -11,9 +10,19 @@ function CardList() {
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
     const pages = Math.ceil(quartos.length / 4);
+    const [sort, setSort] = useState("")
 
     let navigate = useNavigate();
 
+    function useQuery() {
+        const { search } = useLocation();
+
+        return useMemo(() => new URLSearchParams(search), [search]);
+    }
+
+    let query = useQuery();
+    console.log(query.get("page"))
+    console.log(query.get("orderBy"))
 
     useEffect(() => {
 
@@ -34,8 +43,7 @@ function CardList() {
             .then((response) => {
                 setQuartos(response.data);
                 setLoading(false)
-                navigate(`/quartos/page=${page}`)
-                navigate(sort)
+                navigate(`/quartos?page=${page}&orderBy=${sort}`)
             })
             .catch((err) => {
                 console.error("ops! ocorreu um erro" + err);
@@ -48,7 +56,7 @@ function CardList() {
             setPage(3)
         }
 
-        pagination(page)
+        pagination(page, sort)
     }
 
     function handleChangePagePrev() {
@@ -57,28 +65,29 @@ function CardList() {
             setPage(1);
         }
 
-        pagination(page)
+        pagination(page, sort)
     }
 
     function updatePriceOrderAsc() {
-        const sort = (`${page}&orderBy=valueNight&direction=asc`)
-        pagination(sort)
+        const sort = (`valueNight&direction=asc`)
+        console.log(sort)
+        pagination(page, sort)
     }
 
     function updatePriceOrderDesc() {
 
-        const sort = (`${page}&orderBy=valueNight&direction=desc`)
+        const sort = (`valueNight&direction=desc`)
         pagination(sort)
     }
 
     function updateCapacityOrderAsc() {
 
-        const sort = (`${page}&orderBy=capacity&direction=asc`)
+        const sort = (`capacity&direction=asc`)
         pagination(sort)
     }
 
     function updateCapacityOrderDesc() {
-        const sort = (`${page}&orderBy=capacity&direction=desc`)
+        const sort = (`capacity&direction=desc`)
         pagination(sort)
     }
 
@@ -98,7 +107,7 @@ function CardList() {
                             let id = quarto._id;
                             return (
                                 <div className="cardContainer">
-                                    <img src={Image} alt="Logo" className="imgList"
+                                    <img src={quarto.image} alt="Logo" className="imgList"
                                         height={200}
                                     />
                                     <div className="cardListInfo">

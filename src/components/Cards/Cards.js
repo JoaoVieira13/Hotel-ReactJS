@@ -27,7 +27,7 @@ function Cards() {
 
                         <Link to={'/quarto/' + id}> <div className="card">
                             <div className="pousada">
-                                <img src={Image} alt="Logo" className="image"
+                                <img src={quarto.image} alt="Logo" className="image"
                                     height={272}
                                 />
                                 <div className="info">

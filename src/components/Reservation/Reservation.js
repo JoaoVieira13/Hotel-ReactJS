@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import './Reservation.scss'
-import Image from '../../Assets/Images/bedroom.jpg'
 import Calendar from "../Calendar/Calendar";
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import api from '../../Services/api';
 import HotelTerms from "../HotelTerms/HotelTerms";
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 function Reservation() {
     const [open, setOpen] = React.useState(false);
@@ -52,11 +51,11 @@ function Reservation() {
             <div className="teste">
                 <p className="title2">Grande Real Pelourinho Hotel & Spa</p>
                 <div className="reservation">
-                    <img src={Image} alt="Logo" className="bedroom"
+                    <img src={quarto.image} alt="Logo" className="bedroom"
                         height={500}
                     />
                     <div className="reserve">
-                        <button className="button">See Your Reservations</button>
+                        <Link to="/favorites"><button className="button">See Your Reservations</button></Link>
                         <div className="line">
                             <p className="price"> {quarto.valueNight} EUR</p>
                             <p className="avg">avg/night</p>
