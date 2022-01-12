@@ -4,8 +4,13 @@ import { useForm } from "react-hook-form"
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import api from "../../Services/api";
+import { useParams } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function PasswordReset() {
+
+    const { userId, token } = useParams();
 
     const onSubmit = (data) => {
         const newPassword = {
@@ -13,12 +18,15 @@ function PasswordReset() {
         }
 
         api
-            .put(`/auth/login/:userId`, newPassword)
+            .post(`/auth/passwordReset/${userId}/${token}`, newPassword)
             .then(function (response) {
                 console.log(response.data)
+                toast.success("Password Sucessfuly Reseted!")
+                setTimeout(() => window.location.pathname = "/login", 3000)
             })
             .catch(function (err) {
                 console.log(err)
+                toast.error("Error, Please Try Again!")
             })
 
     }
@@ -33,13 +41,27 @@ function PasswordReset() {
     const { errors } = formState;
 
     return (
-        <div>
-            <form method="PUT" onSubmit={handleSubmit(onSubmit)}>
-                <input placeholder="New Password" {...register("password", { required: true })} />
-                <span className="invalid-feedback">{errors.email?.message}</span>
-                <button type="submit">Change</button>
-            </form>
-        </div>
+        <>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+            <div className="centerResetP">
+                <form className="formResetP" method="PUT" onSubmit={handleSubmit(onSubmit)}>
+                    <p className="resetPtext">Reset Your Password Here</p>
+                    <input className="inputR" placeholder="New Password" {...register("password", { required: true })} />
+                    <span className="invalid-feedback">{errors.password?.message}</span>
+                    <button className="submitR" type="submit">Change</button>
+                </form>
+            </div>
+        </>
     );
 }
 

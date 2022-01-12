@@ -54,8 +54,8 @@ function CreateUser() {
             <div className='createUsertest'>
                 <form className='createUserF' onSubmit={handleSubmit(onSubmit)}>
                     <p className='textCreateUser'>Create User!</p>
-                    <input className='userField' placeholder='Email' {...register("email", { required: true })} />
-                    <input className='userField' placeholder='Password' {...register("password", { required: true })} />
+                    <input className='userField' placeholder='Email' {...register("email", { required: true, unique: true })} />
+                    <input className='userField' type="password" placeholder='Password' {...register("password", { required: true })} />
                     <select className='useSelect' {...register("userType", { required: true })}>
                         <option disabled selected>User Type</option>
                         <option value="ADMIN">ADMIN</option>

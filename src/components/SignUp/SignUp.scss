@@ -1,24 +1,10 @@
-.image{
-    border-radius: 10px 0 0 10px;
-    width: 50%;
-    object-fit: cover;
-}
-
-.register{
-    border-radius: 10px;
-    margin: 20px;
-    width: 120px;
-    height: 30px;
-    margin-top: 10px;
-    background-color: #e5ebf5;
-    border:none;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-    cursor: pointer;
-}
-
-.forget{
-    margin-top: -10px;
-    margin-top: 10px;
+@media(max-width:740px) {
+    .SignUpImg{
+        display: none;
+    }
+    .signUpFile{
+        width: 50%;
+    }
 }
 
 .invalid-feedback{
@@ -28,4 +14,64 @@
     font-size: 14px;
 }
 
+.altsContent{
+    display: flex;
+    width: 90%;
+    background-color: #E2E9F3;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+.SignUpImg{
+    width: 50%;
+    border-radius: 10px 0 0 10px;
+}
+
+.altsContain{
+    display: flex;
+    justify-content: center;
+}
+
+.SignUpP{
+    text-align: center;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 40px;
+        font-size: 28px;
+        font-weight: bold;
+         font-family: sans-serif;
+}
+
+.alignSignUp{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.signUpInputs{
+    width: 60%;
+    height: 13px;
+    border-radius: 10px ;
+    background-color: #e7edf7;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    padding: 12px;
+}
+
+.signUpSubmit{
+    border-radius: 10px;
+    margin: 20px;
+    width: 19%;
+    height: 30px;
+    margin-top: 10px;
+    background-color: #e5ebf5;
+    border:none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+    cursor: pointer;
+}
+
+.signUpFile{
+    margin-bottom: 30px;
+}
 

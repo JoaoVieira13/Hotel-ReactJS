@@ -6,57 +6,40 @@ export const Context = createContext();
 
 export function AuthProvider({ children }) {
 
-    const [user, setUser] = useState(null)
-    const isAuthenticated = !!user;
     const cookies = new Cookies();
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
+    const [isloading, setIsloading] = useState(true)
+    const [user, setUser] = useState(null)
 
     useEffect(() => {
-
-        const { 'hotel': token } = cookies
-
-        if (token) {
+        if (cookies.get("hotel") !== undefined) {
             api.get('/auth/me', {
                 headers: {
-                    'x-access-token': token
+                    'x-access-token': cookies.get("hotel")
                 }
             }).then(response => {
-                const { id, email, image, userType } = response.data.decoded
-                setUser({ id, email, image, userType })
-            })
-        }
+                setIsAuthenticated(true)
+                setIsloading(false)
+                setUser(response.data.decoded)
+                console.log(response.data)
+            }).catch((err) => console.log(err))
+        } else setIsloading(false)
     }, [])
 
 
-    async function login({ email, password }) {
-        try {
-            const response = await api.post('/auth/login', {
-                email: email,
-                password: password
-            })
-            cookies.set('hotel', response.data.token, {
-                maxAge: 60 * 60 * 1,
-            })
-
-            api.get('/auth/me', {
-                headers: {
-                    'authorization': response.data.token
-                }
-            }).then(response => {
-                const { _id, email, image, userType } = response.data.decoded
-                setUser({ _id, email, image, userType })
-            })
-        } catch (err) {
-            console.log(err)
-        }
-    }
 
     function signOut() {
-        cookies.remove(undefined, 'hotel')
-        window.location.reload();
+        cookies.remove('hotel')
+        setIsAuthenticated(false)
+        window.pathname.reload()
+    }
+
+    if (isloading == true) {
+        return null
     }
 
     return (
-        <Context.Provider value={{ isAuthenticated, login, signOut }}>
+        <Context.Provider value={{ signOut, isAuthenticated, user }}>
             {children}
         </Context.Provider>
     )

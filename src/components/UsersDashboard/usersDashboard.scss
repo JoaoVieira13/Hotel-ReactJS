@@ -1,3 +1,32 @@
+@media(max-width:1020px){
+    .testa-me{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .flexMap{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .alignUserCards{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media(max-width:530px){
+    img.userImg{
+        display: none;
+    }
+    input.file{
+        width: 120px;
+    }
+    }
+
 .flexMap{
     display: flex;
     height: 100%;

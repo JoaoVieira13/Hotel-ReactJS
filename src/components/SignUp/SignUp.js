@@ -10,26 +10,34 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom"
+import { ref, storage, uploadBytesResumable, getDownloadURL } from "../../Services/firebase";
 
 function SignUp() {
 
     const navigate = useNavigate();
 
-    const onSubmit = (data) => {
-        const newUser = {
-            email: data.email,
-            password: data.password,
-        }
-        api
-            .post("/auth/register", newUser)
-            .then(() => {
-                toast.success("Registration Completed Successfully!")
-                setTimeout(() => navigate('/auth/login'), 3000);
-            })
-            .catch((err) => {
-                console.log(err)
-                toast.error("This Email is Already Registered!");
-            });
+    const onSubmit = async (data) => {
+        const storageRef = ref(storage, "images/" + data.images[0].name);
+        await uploadBytesResumable(storageRef, data.images[0]);
+
+        await getDownloadURL(storageRef).then(async (res) => {
+
+            const newUser = {
+                email: data.email,
+                password: data.password,
+                image: res,
+            }
+            api
+                .post("/auth/register", newUser)
+                .then(() => {
+                    toast.success("Registration Completed Successfully!")
+                    setTimeout(() => navigate('/login'), 3000);
+                })
+                .catch((err) => {
+                    console.log(err)
+                    toast.error("This Email is Already Registered!");
+                });
+        })
     }
 
     const validationSchema = Yup.object().shape({
@@ -60,39 +68,29 @@ function SignUp() {
                 draggable
                 pauseOnHover
             />
-            <div className="alts">
-                <img src={Hotel} alt="Room"
-                    height={610} className="image" />
-                <div className="tudo">
-                    <div class="texto">
-                        <div className="login">SignUp to Pelourinho</div>
-                        <div className="box">
-                            <div className="icons">
-                                <div className="icon"><FeatherIcon icon="mail" size="25" /></div>
-                            </div>
-                            <div className="icons">
-                                <div className="icon"><FeatherIcon icon="twitter" size="25" /></div>
-                            </div>
-                            <div className="icons">
-                                <div className="icon"><FeatherIcon icon="facebook" size="25" /></div>
-                            </div>
-                        </div>
+            <div className="altsContain">
+                <div className="altsContent">
+                    <img src={Hotel} alt="Room"
+                        height={610} className="SignUpImg" />
+                    <div className="alignSignUp">
+                        <div className="SignUpP">SignUp to Pelourinho</div>
+                        <form onSubmit={handleSubmit(onSubmit)} className="form">
+                            <span>Email</span>
+                            <input className="signUpInputs" placeholder="@gmail.com" placeholder="@gmail.com" {...register("email", { required: true, unique: true })} />
+                            <span className="invalid-feedback">{errors.email?.message}</span>
+                            <span>Password</span>
+                            <input placeholder="Password" name="password" type="password" {...register('password')} className={`signUpInputs ${errors.password ? 'is-invalid' : ''}`} />
+                            <span className="invalid-feedback">{errors.password?.message}</span>
+                            <span>Repeat Password</span>
+                            <input placeholder="Password" name="confirmPassword" type="password" {...register('confirmPassword')} className={`signUpInputs ${errors.confirmPassword ? 'is-invalid' : ''}`} />
+                            <span className="invalid-feedback">{errors.confirmPassword?.message}</span>
+                            <input className="signUpFile" type="file" {...register("images", { required: true })} />
+                            <span><Link to="/login">You already have account?</Link></span>
+                            <button className="signUpSubmit">Register</button>
+                        </form>
                     </div>
-                    <form onSubmit={handleSubmit(onSubmit)} className="form">
-                        <span>Email</span>
-                        <input placeholder="@gmail.com" className="input" placeholder="@gmail.com" {...register("email", { required: true, unique: true })} />
-                        <span className="invalid-feedback">{errors.email?.message}</span>
-                        <span>Password</span>
-                        <input placeholder="Password" name="password" type="password" {...register('password')} className={`input ${errors.password ? 'is-invalid' : ''}`} />
-                        <span className="invalid-feedback">{errors.password?.message}</span>
-                        <span>Repeat Password</span>
-                        <input placeholder="Password" name="confirmPassword" type="password" {...register('confirmPassword')} className={`input ${errors.confirmPassword ? 'is-invalid' : ''}`} />
-                        <span className="invalid-feedback">{errors.confirmPassword?.message}</span>
-                        <span className="forget"><Link to="/login">You already have account?</Link></span>
-                        <button className="register">Register</button>
-                    </form>
                 </div>
-            </div >
+            </div>
         </>
     );
 }

@@ -11,8 +11,8 @@ function BackgroundImage() {
       <div>
         <p className="top-left">ENJOY THE BEST NIGHTS <br />
           OF YOUR LIFE.</p>
-        <p className="description">Hospitalidade é uma arte e o Pelourinho Hotel fez dela
-          <br /> uma obra-prima e transformou-a em personalização espontânea.</p>
+        <p className="description">Hospitality is an art and Pelourinho Hotel made it
+          a masterpiece <br />and turned it into spontaneous personalization.</p>
       </div>
     </div >
 

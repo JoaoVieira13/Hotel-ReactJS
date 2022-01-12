@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import HomeScreen from './Screens/HomeScreen/HomeScreen';
 import RoomScreen from './Screens/RoomScreen/RoomScreen';
@@ -11,21 +11,45 @@ import ContactScreen from './Screens/ContactScreen/ContactScreen';
 import DashboardScreen from './Screens/DashboardScreen/DashboardScreen';
 import DashboardBedroomsScreen from './Screens/DashboardBedroomsScreen/DashboardBedroomsScreen';
 import FavoriteScreen from './Screens/FavoriteScreen/FavoriteScreen';
+import { Context } from "./Context/AuthContext";
 
 function Router() {
+
+    const { user, isAuthenticated } = useContext(Context)
+
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomeScreen />} />
-                <Route path="/login" element={<SignInScreen />} />
-                <Route path="/register" element={<SignUpScreen />} />
+                {
+                    !isAuthenticated && (
+                        <>
+                            <Route path="/register" element={<SignUpScreen />} />
+                            <Route path="/login" element={<SignInScreen />} />
+                        </>
+                    )
+                }
+                {
+                    user?.userType == "ADMIN" && (
+                        <>
+                            <Route path="/register" element={<SignUpScreen />} />
+                            <Route path="/login" element={<SignInScreen />} />
+                        </>
+                    )
+                }
                 <Route path="/quarto/:quartoId" element={<RoomScreen />} />
                 <Route path="/quartos/:page" element={<RoomsListScreen />} />
-                <Route path="/passwordReset" element={<PasswordResetScreen />} />
+                <Route path="/passwordReset/:userId/:token" element={<PasswordResetScreen />} />
                 <Route path="/about" element={<AboutScreen />} />
                 <Route path="/contact" element={<ContactScreen />} />
-                <Route path="/dashboard/users" element={<DashboardScreen />} />
-                <Route path="/dashboard/bedrooms" element={<DashboardBedroomsScreen />} />
+                {
+                    user?.userType[0] == "ADMIN" && (
+                        <>
+                            <Route path="/dashboard/users" element={<DashboardScreen />} />
+                            <Route path="/dashboard/bedrooms" element={<DashboardBedroomsScreen />} />
+                        </>
+                    )
+                }
                 <Route path="/favorites" element={<FavoriteScreen />} />
             </Routes>
         </BrowserRouter>

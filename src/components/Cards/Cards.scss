@@ -1,3 +1,13 @@
+@media(max-width:740px){
+    .alinhar{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+
 .text {
         font-size: 24px;
         font-weight: bold;
@@ -29,6 +39,8 @@
 
             .info {
                     text-align: center;
+                    font-size: 15px;
+                    font-family: 'Ubuntu', sans-serif;
             }
         }
     }

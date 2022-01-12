@@ -39,7 +39,6 @@ function Reservation() {
         height: 270,
         backgroundColor: "white",
         borderRadius: 10,
-        opacity: 0.8
     };
 
     if (loading) {
@@ -55,7 +54,7 @@ function Reservation() {
                         height={500}
                     />
                     <div className="reserve">
-                        <Link to="/favorites"><button className="button">See Your Reservations</button></Link>
+                        <Link to="/favorites"><button className="button">See Your Favorites</button></Link>
                         <div className="line">
                             <p className="price"> {quarto.valueNight} EUR</p>
                             <p className="avg">avg/night</p>

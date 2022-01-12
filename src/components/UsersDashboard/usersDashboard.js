@@ -30,13 +30,15 @@ function UsersDashboard() {
                         <p className='userstext'>Users List:</p>
                         {users.map((user) => {
                             return (
-                                <div className='usersCard'>
-                                    <img className='userImg' src={user.image} />
-                                    <div className='usersCol'>
-                                        <span>UserID: {user._id}</span>
-                                        <span>UserEmail: {user.email}</span>
-                                        <span>UserType: {user.userType}</span>
-                                        <DeleteChangeUsers userId={user._id} />
+                                <div className='alignUserCards'>
+                                    <div className='usersCard'>
+                                        <img className='userImg' src={user.image} />
+                                        <div className='usersCol'>
+                                            <span>UserID: {user._id}</span>
+                                            <span>UserEmail: {user.email}</span>
+                                            <span>UserType: {user.userType}</span>
+                                            <DeleteChangeUsers userId={user._id} />
+                                        </div>
                                     </div>
                                 </div>
                             );

@@ -111,7 +111,7 @@ function CardList() {
                                         height={200}
                                     />
                                     <div className="cardListInfo">
-                                        <div className="PelourinhoHotel">PelourinhoHotel⭐⭐⭐⭐⭐</div>
+                                        <div className="PelourinhoHotel"><p>PelourinhoHotel⭐⭐⭐⭐⭐</p></div>
                                         <p className="bedroomName">{quarto.type} bedroom</p>
                                         <div className="bedroomNumber">
                                             <span>Capacity: {quarto.capacity}</span>
