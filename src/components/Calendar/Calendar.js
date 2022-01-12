@@ -23,7 +23,6 @@ function Calendar() {
 
     const date1 = new Date(checkIn);
     const date2 = new Date(checkOut);
-
     const Difference_In_Time = date2.getTime() - date1.getTime();
     const Difference_In_Days = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));
 
@@ -34,25 +33,29 @@ function Calendar() {
             checkOut: data.checkOut,
         }
 
-        api
-            .put(`/quartos/quarto/${quartoId}`, body)
-            .then(function () {
-                console.log("Entrou")
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
+        if (Difference_In_Days < 1) {
+            toast.error("You Need To Choose At Least 1 Night!")
+        } else {
+            api
+                .put(`/quartos/quarto/${quartoId}`, body)
+                .then(function () {
+                    toast.success("Bedroom Reserved!")
+                    // setTimeout(() => window.location.pathname = "/", 2500)
+                })
+                .catch(function () {
+                    toast.error("Error Doing Reservation!")
+                })
 
-        api
-            .put(`/auth/users/61cdd56418f58934d937434a`, body)
-            .then(function () {
-                toast.success("Bedroom Reserved!")
-                setTimeout(() => window.location.pathname = "/", 2500)
-            })
-            .catch(function (error) {
-                console.log(error)
-            })
+            api
+                .put(`/auth/users/61cdd56418f58934d937434a`, body)
+                .then(function () {
+                    console.log("Entrou")
+                })
+                .catch(function (error) {
+                    console.log(error)
+                })
 
+        }
     }
 
     useEffect(() => {
@@ -81,13 +84,12 @@ function Calendar() {
             />
             <div className="dateComponents">
                 <form onSubmit={handleSubmit(onSubmit)} className="CheckRoom">
-                    <span className="CheckText">CheckIn Date</span>
+                    <span className="CheckText">Date 1</span>
                     <input className="inputDate" type="date" {...register("checkIn")} onChange={(e) => { setCheckIn(e.target.value) }} min={disablePastDate()} required />
-                    <span className="CheckText">CheckOut Date</span>
+                    <span className="CheckText">Date 2</span>
                     <input className="inputDate" type="date" {...register("checkOut")} onChange={(e) => { setCheckOut(e.target.value) }} min={disablePastDate()} required />
-
                     <span className="totalDays">Reserve {Difference_In_Days} Nights!</span>
-                    <span className="totalDays">Price: {quarto.valueNight * Difference_In_Days}€</span>
+                    <span className="totalDays">Price: {Math.abs(quarto.valueNight * Difference_In_Days)}€</span>
                     <button className="reserveButton" type="submit">Reserve</button>
                 </form>
             </div >

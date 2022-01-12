@@ -54,7 +54,7 @@ function Reservation() {
                         height={500}
                     />
                     <div className="reserve">
-                        <Link to="/favorites"><button className="button">See Your Favorites</button></Link>
+                        <Link to="/favorites"><button className="button">Add to Favorites</button></Link>
                         <div className="line">
                             <p className="price"> {quarto.valueNight} EUR</p>
                             <p className="avg">avg/night</p>
