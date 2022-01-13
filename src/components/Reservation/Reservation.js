@@ -8,6 +8,7 @@ import api from '../../Services/api';
 import HotelTerms from "../HotelTerms/HotelTerms";
 import { useParams, Link } from "react-router-dom"
 import { Context } from "../../Context/AuthContext";
+import Cookies from 'universal-cookie';
 
 function Reservation() {
     const [open, setOpen] = React.useState(false);
@@ -17,7 +18,10 @@ function Reservation() {
     const { quartoId } = useParams()
 
     const [loading, setLoading] = useState(true);
-    const { isAuthenticated } = useContext(Context)
+    const { isAuthenticated, user } = useContext(Context)
+    const [userId, setUserId] = useState("");
+
+    const cookies = new Cookies();
 
     useEffect(() => {
         // TEM QUE SER O QUE TÁ NA ROTA 
@@ -31,13 +35,27 @@ function Reservation() {
                 console.log(error);
                 setLoading(false)
             })
+
+        api
+            .get('/auth/me', {
+                headers: {
+                    'x-access-token': cookies.get("hotel")
+                }
+            }).then(response => {
+                setUserId(response.data.decoded.id)
+            }).catch((err) => console.log(err))
     }, []);
 
-    api
-        .post(`/auth/favorites`)
-        .then(function (response) {
-
-        })
+    async function handleSubmit(quartoId, userId) {
+        api
+            .post('/auth/favorites', { quartoId, userId })
+            .then(function (response) {
+                console.log(response)
+            })
+            .catch(function (err) {
+                console.log(err)
+            })
+    }
 
     const style = {
         position: 'absolute',
@@ -63,7 +81,7 @@ function Reservation() {
                     />
                     <div className="reserve">
                         {isAuthenticated ? (
-                            <Link to="/favorites"><button className="button">Add to Favorites</button></Link>
+                            <Link to="/favorites"><button className="button" onClick={() => handleSubmit(quartoId, userId)}>Add to Favorites</button></Link>
                         ) : (
                             <Link to="/login"><button className="button">Add to Favorites</button></Link>
                         )

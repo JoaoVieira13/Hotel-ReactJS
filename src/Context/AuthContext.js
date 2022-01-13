@@ -21,7 +21,6 @@ export function AuthProvider({ children }) {
                 setIsAuthenticated(true)
                 setIsloading(false)
                 setUser(response.data.decoded)
-                console.log(response.data)
             }).catch((err) => console.log(err))
         } else setIsloading(false)
     }, [])

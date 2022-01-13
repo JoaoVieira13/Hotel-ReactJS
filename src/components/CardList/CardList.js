@@ -13,12 +13,6 @@ function CardList() {
 
     let navigate = useNavigate();
 
-    function useQuery() {
-        const { search } = useLocation();
-
-        return useMemo(() => new URLSearchParams(search), [search]);
-    }
-
     useEffect(() => {
 
         api
@@ -74,7 +68,6 @@ function CardList() {
     }
 
     function updateCapacityOrderAsc() {
-
         const sort = (`capacity&direction=asc`)
         pagination(page, sort)
     }
@@ -92,7 +85,7 @@ function CardList() {
     if (!loading) {
         return (
             <>
-                <Filters updatePriceOrderAsc={updatePriceOrderAsc} updatePriceOrderDesc={updatePriceOrderDesc}
+                <Filters updatePriceOrderAsc={() => updatePriceOrderAsc()} updatePriceOrderDesc={updatePriceOrderDesc}
                     updateCapacityOrderAsc={updateCapacityOrderAsc} updateCapacityOrderDesc={updateCapacityOrderDesc} />
                 <div className="cardCenter">
                     <div className="centerCenter">
@@ -130,8 +123,8 @@ function CardList() {
                     {/* <SearchBedroom /> */}
                 </div>
                 <div className="paginationButton">
-                    <button className="sortPrice" onClick={handleChangePagePrev}> Previous Page</button>
-                    <button className="sortPrice" onClick={handleChangePage}>Next Page </button>
+                    <button className="sortPrice" onClick={() => handleChangePagePrev()}> Previous Page</button>
+                    <button className="sortPrice" onClick={() => handleChangePage()}>Next Page </button>
                 </div>
             </>
         );
