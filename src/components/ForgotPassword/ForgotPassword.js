@@ -66,7 +66,7 @@ function ForgotPassword() {
                 draggable
                 pauseOnHover
             />
-            <div>
+            <div className="forgotPasswordTxt">
                 <p className="click" onClick={handleOpen}>Forgot Password?</p>
                 <Modal
                     open={open}

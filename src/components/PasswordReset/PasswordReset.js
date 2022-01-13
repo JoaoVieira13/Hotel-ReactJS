@@ -56,7 +56,7 @@ function PasswordReset() {
             <div className="centerResetP">
                 <form className="formResetP" method="PUT" onSubmit={handleSubmit(onSubmit)}>
                     <p className="resetPtext">Reset Your Password Here</p>
-                    <input className="inputR" placeholder="New Password" {...register("password", { required: true })} />
+                    <input className="inputR" type="password" placeholder="New Password" {...register("password", { required: true })} />
                     <span className="invalid-feedback">{errors.password?.message}</span>
                     <button className="submitR" type="submit">Change</button>
                 </form>

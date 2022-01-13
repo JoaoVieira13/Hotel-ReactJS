@@ -9,7 +9,6 @@ import List from '@mui/material/List';
 import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import { GiHamburgerMenu } from "react-icons/gi"
 
 const Navbar = () => {
 
@@ -39,14 +38,25 @@ const Navbar = () => {
                     <Link to="/">Home</Link>,
                     <Link to="/about">About</Link>,
                     <Link to="/quartos/page=1">Rooms</Link>,
-                    <Link to="/contact">Contact</Link>
+                    <Link to="/contact">Contact</Link>,
+                    user?.userType[0] == "ADMIN" && (
+                        <Link to="/dashboard/users">Dashboard</Link>
+                    ),
+                    isAuthenticated ? (
+                        <>
+                            <Link to="/favorites"><div className="favoritesLink">Favorites</div></Link> <br />
+                            <Link to="/login" onClick={() => signOut()}>SignOut</Link>
+                        </>
+                    ) : (
+                        <Link to="/login">SignIn</Link>
+                    )
                 ].map((text, index) => (
                     <ListItem button key={text}>
                         <ListItemText primary={text} />
                     </ListItem>
                 ))}
             </List>
-        </Box>
+        </Box >
     );
 
     return (

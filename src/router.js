@@ -43,7 +43,7 @@ function Router() {
                 <Route path="/about" element={<AboutScreen />} />
                 <Route path="/contact" element={<ContactScreen />} />
                 {
-                    user?.userType[0] == "ADMIN" && (
+                    user?.userType[0] === "ADMIN" && (
                         <>
                             <Route path="/dashboard/users" element={<DashboardScreen />} />
                             <Route path="/dashboard/bedrooms" element={<DashboardBedroomsScreen />} />

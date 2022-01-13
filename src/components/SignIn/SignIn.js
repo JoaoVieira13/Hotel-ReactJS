@@ -96,18 +96,18 @@ function SignIn() {
                             <span>Password</span>
                             <input placeholder="Password" name="password" type="password" {...register('password')} className={`input ${errors.password ? 'is-invalid' : ''}`} />
                             <span className="invalid-feedback">{errors.password?.message}</span>
-                            <ForgotPassword />
                             <div className="buttons">
                                 <button type="submit" className="submit">Login</button>
                                 {!isAuthenticated && (
                                     <>
                                         <p>or</p>
-                                        <button type="submit" className="submit"><Link to="/register">Register</Link></button>
+                                        <button className="submit"><Link to="/register">Register</Link></button>
                                     </>
                                 )
                                 }
                             </div>
                         </form>
+                        <ForgotPassword />
                     </div>
                 </div>
             </div>

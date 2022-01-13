@@ -7,20 +7,11 @@
         justify-content: center;
     }
     .rightCard{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-right: 25%;
+        display: none;
     }
     .imgList{
         min-width: 100%;
-        min-height: 30%;
-    }
-    .alignType{
-       display: flex;
-       justify-content: center;
-       align-items: center;
-       text-align: center;
+        min-height: 370px;
     }
     .cardCenter{
         display: flex;
@@ -33,6 +24,32 @@
     }
     .bedroomName{
         text-align: center;
+    }
+    .pricePerNight{
+        margin-left: 30px;
+        font-family: 'Ubuntu', sans-serif;
+        margin-bottom: 30px;
+        margin-top: 10px;
+    }
+    .offerButton{
+        display: flex;
+    }
+    .cardListInfo{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media(min-width:1300px){
+    .rightCard{
+        display: flex;
+        flex-direction: column;
+        text-align: justify;
+        margin-left: 30%;
+    }
+    .pricePerNight{
+        display: none;
     }
 }
 
@@ -63,7 +80,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 230px;
+    width: 150px;
     height: 35px;
     background-color: #EEF2F4;
 }
@@ -86,13 +103,6 @@
     font-size: 14px;
     font-family: sans-serif;
     margin-left: 8px;
-}
-
-.rightCard{
-    display: flex;
-    flex-direction: column;
-    text-align: justify;
-    margin-left: 30%;
 }
 
 .priceBedroom{

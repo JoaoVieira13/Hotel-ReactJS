@@ -2,7 +2,6 @@ import React, { useState, useEffect, useMemo } from "react";
 import "./CardList.scss";
 import api from "../../Services/api";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import SearchBedroom from "../SearchBedroom/SearchBedroom";
 import Filters from "../Filters/Filters";
 
 function CardList() {
@@ -19,10 +18,6 @@ function CardList() {
 
         return useMemo(() => new URLSearchParams(search), [search]);
     }
-
-    let query = useQuery();
-    console.log(query.get("page"))
-    console.log(query.get("orderBy"))
 
     useEffect(() => {
 
@@ -43,7 +38,7 @@ function CardList() {
             .then((response) => {
                 setQuartos(response.data);
                 setLoading(false)
-                navigate(`/quartos?page=${page}&orderBy=${sort}`)
+                navigate(`/quartos/page=${page}&orderBy=${sort}`)
             })
             .catch((err) => {
                 console.error("ops! ocorreu um erro" + err);
@@ -53,9 +48,9 @@ function CardList() {
     function handleChangePage() {
         setPage(page + 1)
         if (page > pages) {
-            setPage(3)
+            setPage(pages)
         }
-
+        const sort = (`valueNight&direction=asc`)
         pagination(page, sort)
     }
 
@@ -64,31 +59,29 @@ function CardList() {
         if (page === 1) {
             setPage(1);
         }
-
+        const sort = (`valueNight&direction=asc`)
         pagination(page, sort)
     }
 
     function updatePriceOrderAsc() {
         const sort = (`valueNight&direction=asc`)
-        console.log(sort)
         pagination(page, sort)
     }
 
     function updatePriceOrderDesc() {
-
         const sort = (`valueNight&direction=desc`)
-        pagination(sort)
+        pagination(page, sort)
     }
 
     function updateCapacityOrderAsc() {
 
         const sort = (`capacity&direction=asc`)
-        pagination(sort)
+        pagination(page, sort)
     }
 
     function updateCapacityOrderDesc() {
         const sort = (`capacity&direction=desc`)
-        pagination(sort)
+        pagination(page, sort)
     }
 
 
@@ -111,7 +104,7 @@ function CardList() {
                                         height={200}
                                     />
                                     <div className="cardListInfo">
-                                        <div className="PelourinhoHotel"><p>PelourinhoHotel⭐⭐⭐⭐⭐</p></div>
+                                        <div className="PelourinhoHotel"><p>PelourinhoHotel⭐</p></div>
                                         <p className="bedroomName">{quarto.type} bedroom</p>
                                         <div className="bedroomNumber">
                                             <span>Capacity: {quarto.capacity}</span>
@@ -119,7 +112,7 @@ function CardList() {
                                             <span>Service: {quarto.service}</span>
                                         </div>
                                     </div>
-
+                                    <div className="pricePerNight">{quarto.valueNight} Eur</div>
                                     <div className="rightCard">
                                         <span className="priceBedroom">{quarto.valueNight} Eur</span>
                                         <div className="alignType">

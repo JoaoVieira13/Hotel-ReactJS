@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import './Reservation.scss'
 import Calendar from "../Calendar/Calendar";
 import Box from '@mui/material/Box';
@@ -7,6 +7,7 @@ import Modal from '@mui/material/Modal';
 import api from '../../Services/api';
 import HotelTerms from "../HotelTerms/HotelTerms";
 import { useParams, Link } from "react-router-dom"
+import { Context } from "../../Context/AuthContext";
 
 function Reservation() {
     const [open, setOpen] = React.useState(false);
@@ -16,6 +17,7 @@ function Reservation() {
     const { quartoId } = useParams()
 
     const [loading, setLoading] = useState(true);
+    const { isAuthenticated } = useContext(Context)
 
     useEffect(() => {
         // TEM QUE SER O QUE TÁ NA ROTA 
@@ -30,6 +32,12 @@ function Reservation() {
                 setLoading(false)
             })
     }, []);
+
+    api
+        .post(`/auth/favorites`)
+        .then(function (response) {
+
+        })
 
     const style = {
         position: 'absolute',
@@ -54,10 +62,15 @@ function Reservation() {
                         height={500}
                     />
                     <div className="reserve">
-                        <Link to="/favorites"><button className="button">Add to Favorites</button></Link>
+                        {isAuthenticated ? (
+                            <Link to="/favorites"><button className="button">Add to Favorites</button></Link>
+                        ) : (
+                            <Link to="/login"><button className="button">Add to Favorites</button></Link>
+                        )
+                        }
                         <div className="line">
                             <p className="price"> {quarto.valueNight} EUR</p>
-                            <p className="avg">avg/night</p>
+                            <p className="avg">price/night</p>
                         </div>
                         <hr />
                         <div class="inf">
@@ -71,7 +84,10 @@ function Reservation() {
                             at check-in, of a COVID Digital Certificate from the European Union or a negative
                             test.</p>
                         <div className="selectDate">
-                            <button onClick={handleOpen} className="date">Select Date</button>
+                            {isAuthenticated && (
+                                <button onClick={handleOpen} className="date">Select Date</button>
+                            )
+                            }
                             <Modal
                                 open={open}
                                 onClose={handleClose}
@@ -88,7 +104,7 @@ function Reservation() {
                 </div>
                 <p className="overview">Bedroom Overview</p>
                 <div className="apiInfo">
-                    <p>{quarto.information}</p>
+                    <p className="quartoInfoTxt">{quarto.information}</p>
                 </div>
                 <HotelTerms />
             </div>
