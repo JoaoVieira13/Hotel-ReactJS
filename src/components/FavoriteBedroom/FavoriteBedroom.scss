@@ -1,3 +1,9 @@
+@media(max-width:800px){
+    .favImg{
+        display: none;
+    }
+}
+
 .favCenter{
     display: flex;
     flex-direction: column;
@@ -21,6 +27,7 @@
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
     margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .favImg{
@@ -55,4 +62,26 @@
     font-size: 14px;
     font-family: sans-serif;
     margin-left: 8px;
+}
+
+.deletedFavorites{
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 15px;
+    border: 1px solid black;
+}
+
+.mdIcon{
+    width: 25px;
+    height: 25px;
+}
+
+.flexTiteButton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

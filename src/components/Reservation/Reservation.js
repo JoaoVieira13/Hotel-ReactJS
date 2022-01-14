@@ -102,8 +102,10 @@ function Reservation() {
                             at check-in, of a COVID Digital Certificate from the European Union or a negative
                             test.</p>
                         <div className="selectDate">
-                            {isAuthenticated && (
+                            {isAuthenticated ? (
                                 <button onClick={handleOpen} className="date">Select Date</button>
+                            ) : (
+                                <Link to="/login"><button className="date">Select Date</button></Link>
                             )
                             }
                             <Modal

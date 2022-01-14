@@ -32,7 +32,8 @@
     }
     .box{
         display: flex;
-        place-self: center;
+        justify-content: center;
+        margin-right: 30px;
         .icons{
             margin-left: 25px;
             margin-top: 20px;

@@ -30,7 +30,6 @@ export function AuthProvider({ children }) {
     function signOut() {
         cookies.remove('hotel')
         setIsAuthenticated(false)
-        window.pathname.reload()
     }
 
     if (isloading == true) {

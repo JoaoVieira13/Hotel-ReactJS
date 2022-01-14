@@ -3,14 +3,30 @@ import "./ContactUs.scss";
 import Image from "../../Assets/Images/hotel.jpg"
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { useForm } from "react-hook-form";
+import api from "../../Services/api";
 
 function ContactUs() {
 
-    function continueornot() {
-        if (document.getElementById('subject').value) {
-            { alert("Message sent!"); return true; }
+    const { register, handleSubmit } = useForm();
+
+    const Submit = async (data) => {
+        const body = {
+            name: data.name,
+            email: data.email,
+            country: data.country,
+            subject: data.subject,
         }
-        else { toast.error("You need to fill all the fields!"); return false; }
+
+        api
+            .post(`/auth/comment`, body)
+            .then(function () {
+                toast.success("Email Sent Successfuly!")
+            })
+            .catch(function (err) {
+                console.log(err)
+                toast.error("Error Sending Email!")
+            })
     }
 
     return (
@@ -36,13 +52,13 @@ function ContactUs() {
                         <img className="contactImg" src={Image} />
                     </div>
                     <div class="column">
-                        <form>
+                        <form method="POST" onSubmit={handleSubmit(Submit)}>
                             <label for="fname">Name</label>
-                            <input type="text" id="fname" name="firstname" placeholder="Your name.." required />
+                            <input type="text" id="fname" name="firstname" placeholder="Your name.." {...register("name", { required: true })} />
                             <label for="lname">Email</label>
-                            <input type="text" id="emailfield" name="email" placeholder="Your email.." required />
+                            <input type="text" id="emailfield" name="email" placeholder="Your email.."  {...register("email", { required: true })} />
                             <label for="country">Country</label>
-                            <select className="selectC" id="country" name="country">
+                            <select className="selectC" id="country" name="country"  {...register("country", { required: true })}>
                                 <option value="Portugal">Portugal</option>
                                 <option value="australia">Australia</option>
                                 <option value="canada">Canada</option>
@@ -50,8 +66,8 @@ function ContactUs() {
                                 <option value="Other">Other</option>
                             </select>
                             <label for="subject">Subject</label>
-                            <textarea id="subject" name="subject" placeholder="Write something.." required />
-                            <input type="submit" value="Submit" onClick={() => continueornot()} />
+                            <textarea id="subject" name="subject" placeholder="Write something.."  {...register("subject", { required: true })} />
+                            <input type="submit" value="Submit" />
                         </form >
                     </div>
                 </div>

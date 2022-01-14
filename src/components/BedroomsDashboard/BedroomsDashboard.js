@@ -4,10 +4,14 @@ import "./BedroomsDashboard.scss";
 import api from "../../Services/api";
 import DeleteChangeBedrooms from '../DeleteChangeBedrooms/DeleteChangeBedrooms';
 import CreateBedrooms from '../CreateBedrooms/CreateBedrooms';
+import Cookies from 'universal-cookie';
+import ErroPermissions from '../ErroPermissions/ErroPermissions';
 
 function BedroomsDashboard() {
 
     const [quartos, setQuartos] = useState([])
+    const cookies = new Cookies();
+    const [userType, setUserType] = useState("");
 
     useEffect(() => {
         api
@@ -18,7 +22,22 @@ function BedroomsDashboard() {
             .catch(function (err) {
                 console.log(err)
             })
+
+        api
+            .get('/auth/me', {
+                headers: {
+                    'x-access-token': cookies.get("hotel")
+                }
+            }).then(response => {
+                setUserType(response.data.decoded.userType[0])
+            }).catch((err) => console.log(err))
     }, []);
+
+    if (userType !== "ADMIN") {
+        return (
+            < ErroPermissions />
+        )
+    }
 
     return (
         <div className='BedroomsDashboard'>

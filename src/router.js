@@ -29,28 +29,26 @@ function Router() {
                         </>
                     )
                 }
-                {
-                    user?.userType == "ADMIN" && (
-                        <>
-                            <Route path="/register" element={<SignUpScreen />} />
-                            <Route path="/login" element={<SignInScreen />} />
-                        </>
-                    )
-                }
                 <Route path="/quarto/:quartoId" element={<RoomScreen />} />
                 <Route path="/quartos/:page" element={<RoomsListScreen />} />
                 <Route path="/passwordReset/:userId/:token" element={<PasswordResetScreen />} />
                 <Route path="/about" element={<AboutScreen />} />
                 <Route path="/contact" element={<ContactScreen />} />
-                {
+                <Route path="/dashboard/users" element={<DashboardScreen />} />
+                <Route path="/dashboard/bedrooms" element={<DashboardBedroomsScreen />} />
+                {/* {
                     user?.userType[0] === "ADMIN" && (
                         <>
                             <Route path="/dashboard/users" element={<DashboardScreen />} />
                             <Route path="/dashboard/bedrooms" element={<DashboardBedroomsScreen />} />
                         </>
                     )
+                } */}
+                {
+                    isAuthenticated && (
+                        <Route path="/favorites" element={<FavoriteScreen />} />
+                    )
                 }
-                <Route path="/favorites" element={<FavoriteScreen />} />
             </Routes>
         </BrowserRouter>
     );

@@ -79,13 +79,13 @@ function SignIn() {
                             <div className="login">Login to Pelourinho</div>
                             <div className="box">
                                 <div className="icons">
-                                    <div className="icon"><FeatherIcon icon="mail" size="25" /></div>
+                                    <div className="icon"><FeatherIcon icon="star" size="25" /></div>
                                 </div>
                                 <div className="icons">
-                                    <div className="icon"><FeatherIcon icon="twitter" size="25" /></div>
+                                    <div className="icon"><FeatherIcon icon="star" size="25" /></div>
                                 </div>
                                 <div className="icons">
-                                    <div className="icon"><FeatherIcon icon="facebook" size="25" /></div>
+                                    <div className="icon"><FeatherIcon icon="star" size="25" /></div>
                                 </div>
                             </div>
                         </div>

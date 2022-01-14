@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import "./FavoriteBedroom.scss";
 import api from '../../Services/api';
 import Cookies from 'universal-cookie';
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { MdDeleteOutline } from 'react-icons/md';
 
 function FavoriteBedroom() {
 
@@ -31,32 +34,55 @@ function FavoriteBedroom() {
     }, [])
 
     return (
-        <div className='favCenter'>
-            <p className='favText'>My Favorite Bedrooms:</p>
-            {saveFavorite.map((favorite) => {
-                return (
-                    <div className='favCard'>
-                        <div className='favInfoFlex'>
-                            <img className='favImg' src={favorite.image} />
-                            <div className='flexTxt'>
-                                <p className='favTitle'>{favorite.type}</p>
-                                <div className='favNumber'>
-                                    <button onClick={(() => api.delete(`/auth/favorites`, {
-                                        headers: {
-                                            "quartoId": favorite._id,
-                                            "userId": userId,
-                                        }
-                                    }))}>X</button>
-                                    <span>Capacity: {favorite.capacity}</span>
-                                    <span>Bedrooms Number: {favorite.bedroomsNumber}</span>
-                                    <span>Service: {favorite.service}</span>
+        <>
+            <ToastContainer
+                position="top-right"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
+            <div className='favCenter'>
+                <p className='favText'>My Favorite Bedrooms:</p>
+                {saveFavorite.map((favorite) => {
+                    return (
+                        <div className='favCard'>
+                            <div className='favInfoFlex'>
+                                <img className='favImg' src={favorite.image} />
+                                <div className='flexTxt'>
+                                    <div className='flexTiteButton'>
+                                        <p className='favTitle'>{favorite.type}</p>
+                                        <button className='deletedFavorites' onClick={(() => api.delete(`/auth/favorites`, {
+                                            headers: {
+                                                "quartoId": favorite._id,
+                                                "userId": userId,
+                                            }
+                                        })
+                                            .then(function () {
+                                                toast.success("Favorite Deleted!")
+                                                setTimeout(() => window.location.reload(), 3000)
+                                            })
+                                            .catch(function () {
+                                                toast.error("Error Removing Favorite!")
+                                            })
+                                        )}><MdDeleteOutline className='mdIcon' /></button>
+                                    </div>
+                                    <div className='favNumber'>
+                                        <span>Capacity: {favorite.capacity}</span>
+                                        <span>Bedrooms Number: {favorite.bedroomsNumber}</span>
+                                        <span>Service: {favorite.service}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                );
-            })}
-        </div>
+                    );
+                })}
+            </div>
+        </>
     )
 }
 

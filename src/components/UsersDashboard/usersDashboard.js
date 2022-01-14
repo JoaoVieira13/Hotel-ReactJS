@@ -4,10 +4,14 @@ import DashboardSelector from "../../components/DashboardSelector/DashboardSelec
 import api from "../../Services/api";
 import DeleteChangeUsers from '../DeleteChangeUsers/DeleteChangeUsers';
 import CreateUser from '../CreateUser/CreateUser';
+import Cookies from 'universal-cookie';
+import ErroPermissions from '../ErroPermissions/ErroPermissions';
 
 function UsersDashboard() {
 
     const [users, setUsers] = useState([])
+    const [userType, setUserType] = useState("");
+    const cookies = new Cookies();
 
     useEffect(() => {
         api
@@ -18,8 +22,23 @@ function UsersDashboard() {
             .catch(function (err) {
                 console.log(err)
             })
+
+
+        api
+            .get('/auth/me', {
+                headers: {
+                    'x-access-token': cookies.get("hotel")
+                }
+            }).then(response => {
+                setUserType(response.data.decoded.userType[0])
+            }).catch((err) => console.log(err))
     }, []);
 
+    if (userType !== "ADMIN") {
+        return (
+            < ErroPermissions />
+        )
+    }
 
     return (
         <>
