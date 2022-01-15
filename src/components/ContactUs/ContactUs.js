@@ -42,7 +42,7 @@ function ContactUs() {
                 draggable
                 pauseOnHover
             />
-            <div class="container">
+            <div class="container3">
                 <div>
                     <h2>Contact Us</h2>
                     <p>Swing by for a cup of coffee, or leave us a message:</p>

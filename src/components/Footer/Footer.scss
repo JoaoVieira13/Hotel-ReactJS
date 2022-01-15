@@ -27,6 +27,7 @@
 .pintext{
     font-size: 24px;
     font-weight: bold;
+    font-family: 'Ubuntu', sans-serif;
     padding-top: 30px;
     margin-left: 5px;
     padding-bottom: 20px;
@@ -42,12 +43,13 @@
     flex-direction: column;
     padding-left: 10%;
     text-align: center;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .headquarter{
     font-size: 16px;
+    font-family: 'Ubuntu', sans-serif;
     font-weight:600;
-    font-family: sans-serif;
     margin-bottom: 30px;
 }
 
@@ -74,11 +76,13 @@
     padding-top: 25px;
     cursor: pointer;
     background-color: #b7c7dd;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .social{
     display: flex;
     flex-direction: column;
+    font-family: 'Ubuntu', sans-serif;
     padding-left: 10%;
 }
 
@@ -94,7 +98,7 @@
 .head{
     font-size: 16px;
     font-weight:600;
-    font-family: sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     margin-bottom: 20px;
 }
 
