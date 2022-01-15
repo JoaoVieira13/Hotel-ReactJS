@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import "./FavoriteBedroom.scss";
 import api from '../../Services/api';
 import Cookies from 'universal-cookie';
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { MdDeleteOutline } from 'react-icons/md';
+import { Context } from "../../Context/AuthContext";
+import NotAuthenticatedError from "../../components/NotAuthenticatedError/NotAuthenticatedError"
 
 function FavoriteBedroom() {
 
     const cookies = new Cookies();
     const [saveFavorite, setSaveFavorite] = useState([]);
     const [userId, setUserId] = useState("");
+    const { isAuthenticated } = useContext(Context)
 
     useEffect(() => {
         api
@@ -32,6 +35,21 @@ function FavoriteBedroom() {
                 setUserId(response.data.decoded.id)
             }).catch((err) => console.log(err))
     }, [])
+
+    if (!isAuthenticated) {
+        return (
+            <NotAuthenticatedError />
+        )
+    }
+
+    if (saveFavorite.length === 0) {
+        return (
+            <div className='noFavs'>
+                <p className='textNoFavs'>Hi User, <br />You Have No Favorites!</p>
+                <p className='noFavsInfo'>Please add any bedroom to your favorites and try again!</p>
+            </div>
+        )
+    }
 
     return (
         <>

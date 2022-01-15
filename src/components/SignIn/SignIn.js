@@ -12,6 +12,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import Cookies from 'universal-cookie';
 import api from "../../Services/api";
 import { Context } from "../../Context/AuthContext";
+import ErroPermissions from "../../components/ErroPermissions/ErroPermissions"
 
 function SignIn() {
 
@@ -34,12 +35,12 @@ function SignIn() {
                 cookies.set('hotel', response.data.token, {
                     maxAge: 60 * 60 * 1,
                 })
-                Navigate("/")
-                if (typeof (window) !== 'undefined') {
-                    window.location.reload(false);
-                }
-
+                Navigate('/')
+                window.location.reload();
             })
+                .catch(() => {
+                    toast.error("Error, Please Try Again!")
+                })
         } catch (err) {
             console.log(err)
         }
@@ -56,6 +57,12 @@ function SignIn() {
     const formOptions = { resolver: yupResolver(validationSchema) };
     const { register, handleSubmit, formState } = useForm(formOptions);
     const { errors } = formState;
+
+    if (isAuthenticated) {
+        return (
+            <ErroPermissions />
+        )
+    }
 
     return (
         <>

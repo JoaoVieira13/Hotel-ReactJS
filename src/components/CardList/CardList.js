@@ -95,15 +95,17 @@ function CardList() {
                                 <div className="cardContainer">
                                     <img src={quarto.image} alt="Logo" className="imgList"
                                         height={200}
-                                    />
+                                    ></img>
                                     <div className="cardListInfo">
                                         <div className="PelourinhoHotel"><p>PelourinhoHotel⭐</p></div>
                                         <p className="bedroomName">{quarto.type} bedroom</p>
-                                        <div className="bedroomNumber">
-                                            <span>Capacity: {quarto.capacity}</span>
-                                            <span>Bedrooms Number: {quarto.bedroomsNumber}</span>
-                                            <span>Service: {quarto.service}</span>
-                                        </div>
+                                        <Link to={`/quarto/${id}`}>
+                                            <div className="bedroomNumber">
+                                                <span>Capacity: {quarto.capacity}</span>
+                                                <span>Bedrooms Number: {quarto.bedroomsNumber}</span>
+                                                <span>Service: {quarto.service}</span>
+                                            </div>
+                                        </Link>
                                     </div>
                                     <div className="pricePerNight">{quarto.valueNight} Eur</div>
                                     <div className="rightCard">

@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./SignUp.scss"
 import Hotel from '../../Assets/Images/hotel.jpg'
-import FeatherIcon from 'feather-icons-react';
 import { useForm } from "react-hook-form";
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -11,10 +10,13 @@ import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { Link } from "react-router-dom"
 import { ref, storage, uploadBytesResumable, getDownloadURL } from "../../Services/firebase";
+import { Context } from "../../Context/AuthContext";
+import ErroPermissions from "../../components/ErroPermissions/ErroPermissions"
 
 function SignUp() {
 
     const navigate = useNavigate();
+    const { isAuthenticated } = useContext(Context);
 
     const onSubmit = async (data) => {
         const storageRef = ref(storage, "images/" + data.images[0].name);
@@ -54,6 +56,12 @@ function SignUp() {
     const formOptions = { resolver: yupResolver(validationSchema) };
     const { register, handleSubmit, formState } = useForm(formOptions);
     const { errors } = formState;
+
+    if (isAuthenticated) {
+        return (
+            <ErroPermissions />
+        )
+    }
 
     return (
         <>

@@ -2,7 +2,7 @@ import React from "react";
 import "./AboutUs.scss";
 import Vieira from "../../Assets/Images/Vieira.jpg";
 import Rui from "../../Assets/Images/Rui.jpg"
-import Rafinha from "../../Assets/Images/Rafinha.png"
+import Rafinha from "../../Assets/Images/Rafinha.jpg"
 import { Link } from "react-router-dom"
 
 function AboutUs() {
@@ -23,7 +23,7 @@ function AboutUs() {
                         <p class="title">Founder & Owner</p>
                         <p className="devDesc">He tends to tell others to do things and sit around doing nothing, but when is needed he does everything.</p>
                         <p>joaopintovieira13@gmail.com</p>
-                        <Link to="/contact"><button class="buttonAbout">Contact</button></Link>
+                        <a href="https://github.com/JoaoVieira13"><button class="buttonAbout">Contact</button></a>
                     </div>
                 </div>
 
@@ -34,18 +34,18 @@ function AboutUs() {
                         <p class="title">Founder & Owner</p>
                         <p className="devDesc">He tends to take João's position when he's not present. He is the officer manager because he likes to talk a lot.</p>
                         <p>ruizinhoFreamunde@gmail.com</p>
-                        <Link to="/contact"><button class="buttonAbout">Contact</button></Link>
+                        <a href="https://github.com/ruicosta1933"><button class="buttonAbout">Contact</button></a>
                     </div>
                 </div>
 
                 <div class="cards">
                     <img className="imgAbout" src={Rafinha} alt="Rafa" />
                     <div class="containerAbout">
-                        <h2>Rafael Ferrás</h2>
-                        <p class="title">Employer</p>
-                        <p className="devDesc">He usually stays at the PelourinhoBar eating panikes. (He was not from our group, we just needed someone to fill the screen)</p>
-                        <p>RafaelFerrás@Panikes.com</p>
-                        <Link to="/contact"><button class="buttonAbout">Contact</button></Link>
+                        <h2>Afonso Campos</h2>
+                        <p class="title">AeroSpace Founder</p>
+                        <p className="devDesc">He usually stays driving airplanes at Pelourinho AeroSpace Flights. (He was part of this project but unfortunately he left!)</p>
+                        <p>AfonsoCampas@Aerospace.com</p>
+                            <Link to="/contact"><button class="buttonAbout">Contact</button></Link>
                     </div>
                 </div>
             </div>

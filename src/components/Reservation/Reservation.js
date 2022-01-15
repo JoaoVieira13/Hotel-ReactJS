@@ -50,7 +50,6 @@ function Reservation() {
         api
             .post('/auth/favorites', { quartoId, userId })
             .then(function (response) {
-                console.log(response)
             })
             .catch(function (err) {
                 console.log(err)

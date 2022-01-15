@@ -85,3 +85,31 @@
     justify-content: space-between;
     align-items: center;
 }
+
+.noFavs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-self: center;
+    align-items: center;
+    height: 620px;
+    background-color: #bfd0e7;
+    margin-bottom: -40px;
+}
+
+.textNoFavs{
+    color: black;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+    text-align: center;
+    line-height: 40px;
+}
+
+.noFavsInfo{
+    color: rgb(92, 92, 92);
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}

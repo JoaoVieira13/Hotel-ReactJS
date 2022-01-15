@@ -1,7 +1,7 @@
-import React from 'react'
-import "./ErroPermissions.scss"
+import React from 'react';
+import "./NotAuthenticatedError.scss";
 
-function ErroPermissions() {
+function NotAuthenticatedError() {
     return (
         <div className='ErrorPic'>
             <div id="containerZ">
@@ -92,11 +92,11 @@ function ErroPermissions() {
                         </g>
                     </g>
                 </svg>
-                <h1 className='warning'>FORBIDDEN</h1>
-                <p className='protectedRoute'>You have no permissions to access this route!</p>
+                <h1 className='warning'>NO AUTH</h1>
+                <p className='noAuth'>You need to SingIn to see your favorites!</p>
             </div>
         </div>
     )
 }
 
-export default ErroPermissions
+export default NotAuthenticatedError
