@@ -1,7 +1,7 @@
 import React from "react";
 import "./AboutUs.scss";
-import Vieira from "../../Assets/Images/Vieira.jpg";
-import Rui from "../../Assets/Images/Rui.jpg"
+import Vieira from "../../Assets/Images/Joao.jpeg";
+import Rui from "../../Assets/Images/Rui.jpeg"
 import Rafinha from "../../Assets/Images/Rafinha.jpg"
 import { Link } from "react-router-dom"
 
@@ -45,7 +45,7 @@ function AboutUs() {
                         <p class="title">AeroSpace Founder</p>
                         <p className="devDesc">He usually stays driving airplanes at Pelourinho AeroSpace Flights. (He was part of this project but unfortunately he left!)</p>
                         <p>AfonsoCampas@Aerospace.com</p>
-                            <Link to="/contact"><button class="buttonAbout">Contact</button></Link>
+                        <Link to="/contact"><button class="buttonAbout">Contact</button></Link>
                     </div>
                 </div>
             </div>

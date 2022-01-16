@@ -34,7 +34,7 @@ function Filters({ updatePriceOrderAsc, updatePriceOrderDesc, updateCapacityOrde
                 <button className='sortPrice' onClick={() => orderByAsc(updatePriceOrderAsc)}>Price Low-High</button>
                 <button className='sortPrice' onClick={() => orderByDesc(updatePriceOrderDesc)}>Price High-Low</button>
                 <button className='sortPrice' onClick={() => orderByAscCapacity(updatePriceOrderAsc)}>Less Capacity</button>
-                <button className='sortPrice' onClick={() => orderByDesc(updatePriceOrderDesc)}>More Capacity</button>
+                <button className='sortPrice' onClick={() => orderByDescCapacity(updatePriceOrderDesc)}>More Capacity</button>
             </div>
         </div>
     );

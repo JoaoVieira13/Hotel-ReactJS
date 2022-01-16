@@ -39,7 +39,7 @@ function DeleteChangeUsers({ userId }) {
             .then(function () {
                 console.log("User alterado com sucesso!")
                 toast.success("User Changed!")
-                setTimeout(() => window.location.pathname = "/dashboard/users", 3000);
+                setTimeout(() => window.location.pathname = "/dashboard/users/page=1", 3000);
             })
             .catch(function (err) {
                 console.log(err)

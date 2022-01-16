@@ -39,8 +39,8 @@ const Navbar = () => {
                     <Link to="/about">About</Link>,
                     <Link to="/quartos/page=1">Rooms</Link>,
                     <Link to="/contact">Contact</Link>,
-                    user?.userType[0] == "ADMIN" && (
-                        <Link to="/dashboard/users">Dashboard</Link>
+                    isAuthenticated && user?.userType[0] == "ADMIN" && (
+                        <Link to="/dashboard/users/page=1">Dashboard</Link>
                     ),
                     isAuthenticated ? (
                         <>
@@ -83,11 +83,11 @@ const Navbar = () => {
                 <div className="options">
                     <Link to="/">Home</Link>
                     <Link to="/about">About</Link>
-                    <Link to="/quartos/page=1">Rooms</Link>
+                    <Link to="/quartos/:orderBy">Rooms</Link>
                     <Link to="/contact">Contact</Link>
                     {
-                        user?.userType[0] == "ADMIN" && (
-                            <Link to="/dashboard/users">Dashboard</Link>
+                        isAuthenticated && user?.userType[0] === "ADMIN" && (
+                            <Link to="/dashboard/users/page=1">Dashboard</Link>
                         )
                     }
                     {

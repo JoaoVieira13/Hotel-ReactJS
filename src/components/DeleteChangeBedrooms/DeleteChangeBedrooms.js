@@ -35,7 +35,6 @@ function DeleteChangeBedrooms({ bedroomId }) {
             capacity: data.capacity,
             information: data.information,
             valueNight: data.valueNight,
-            // image: data.image,
             service: data.service,
         }
 
@@ -44,7 +43,7 @@ function DeleteChangeBedrooms({ bedroomId }) {
             .then(function (response) {
                 console.log(response.data)
                 toast.success("Bedroom Changed!")
-                setTimeout(() => window.location.pathname = "/dashboard/bedrooms", 3000);
+                setTimeout(() => window.location.pathname = "/dashboard/bedrooms/page=1", 3000);
             })
             .catch(function (err) {
                 console.log(err)

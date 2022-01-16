@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from "react";
 import "./CardList.scss";
 import api from "../../Services/api";
-import { Link, useNavigate, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Filters from "../Filters/Filters";
 
 function CardList() {
@@ -9,7 +9,6 @@ function CardList() {
     const [loading, setLoading] = useState(true);
     const [page, setPage] = useState(1);
     const pages = Math.ceil(quartos.length / 4);
-    const [sort, setSort] = useState("")
 
     let navigate = useNavigate();
 
@@ -26,13 +25,26 @@ function CardList() {
             });
     }, [])
 
-    function pagination(page, sort) {
+    function pagination(sort) {
         api
-            .get(`/quartos/add?page=${page}&orderBy=${sort}`)
+            .get(`/quartos/add?orderBy=${sort}`)
             .then((response) => {
                 setQuartos(response.data);
                 setLoading(false)
-                navigate(`/quartos/page=${page}&orderBy=${sort}`)
+                navigate(`/quartos/orderBy=${sort}`)
+            })
+            .catch((err) => {
+                console.error("ops! ocorreu um erro" + err);
+            });
+    }
+
+    function pagin(page) {
+        api
+            .get(`/quartos/add?page=${page}`)
+            .then((response) => {
+                setQuartos(response.data);
+                setLoading(false)
+                navigate(`/quartos/page=${page}`)
             })
             .catch((err) => {
                 console.error("ops! ocorreu um erro" + err);
@@ -42,10 +54,10 @@ function CardList() {
     function handleChangePage() {
         setPage(page + 1)
         if (page > pages) {
-            setPage(pages)
+            setPage(pages + 1)
         }
-        const sort = (`valueNight&direction=asc`)
-        pagination(page, sort)
+
+        pagin(page)
     }
 
     function handleChangePagePrev() {
@@ -53,28 +65,28 @@ function CardList() {
         if (page === 1) {
             setPage(1);
         }
-        const sort = (`valueNight&direction=asc`)
-        pagination(page, sort)
+
+        pagin(page)
     }
 
     function updatePriceOrderAsc() {
         const sort = (`valueNight&direction=asc`)
-        pagination(page, sort)
+        pagination(sort)
     }
 
     function updatePriceOrderDesc() {
         const sort = (`valueNight&direction=desc`)
-        pagination(page, sort)
+        pagination(sort)
     }
 
     function updateCapacityOrderAsc() {
         const sort = (`capacity&direction=asc`)
-        pagination(page, sort)
+        pagination(sort)
     }
 
     function updateCapacityOrderDesc() {
         const sort = (`capacity&direction=desc`)
-        pagination(page, sort)
+        pagination(sort)
     }
 
 

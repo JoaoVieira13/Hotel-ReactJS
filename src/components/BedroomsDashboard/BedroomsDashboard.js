@@ -6,12 +6,16 @@ import DeleteChangeBedrooms from '../DeleteChangeBedrooms/DeleteChangeBedrooms';
 import CreateBedrooms from '../CreateBedrooms/CreateBedrooms';
 import Cookies from 'universal-cookie';
 import ErroPermissions from '../ErroPermissions/ErroPermissions';
+import { useNavigate } from 'react-router-dom';
 
 function BedroomsDashboard() {
 
     const [quartos, setQuartos] = useState([])
     const cookies = new Cookies();
     const [userType, setUserType] = useState("");
+    let Navigate = useNavigate();
+    const [page, setPage] = useState(1);
+    const pages = Math.ceil(quartos.length / 4);
 
     useEffect(() => {
         api
@@ -33,10 +37,40 @@ function BedroomsDashboard() {
             }).catch((err) => console.log(err))
     }, []);
 
+    function pagination(page) {
+        api
+            .get(`/quartos/add?page=${page}`)
+            .then(function (response) {
+                setQuartos(response.data)
+                Navigate(`/dashboard/bedrooms/page=${page}`)
+            })
+            .catch(function (err) {
+                console.log(err)
+            })
+    }
+
     if (userType !== "ADMIN") {
         return (
             < ErroPermissions />
         )
+    }
+
+    function handleChangePage() {
+        setPage(page + 1)
+        if (page > pages) {
+            setPage(pages + 1)
+        }
+        // console.log(page, pages)
+        pagination(page)
+    }
+
+    function handleChangePagePrev() {
+        setPage(page - 1)
+        if (page === 1) {
+            setPage(1);
+        }
+        // console.log(page, pages)
+        pagination(page)
     }
 
     return (
@@ -58,6 +92,10 @@ function BedroomsDashboard() {
                         </div>
                     );
                 })}
+                <div className="paginationButt">
+                    <button className="sortPrice" onClick={() => handleChangePagePrev()}> Previous Page</button>
+                    <button className="sortPrice" onClick={() => handleChangePage()}>Next Page </button>
+                </div>
             </div>
             <CreateBedrooms />
         </div>

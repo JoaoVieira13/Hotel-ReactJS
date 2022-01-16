@@ -11,23 +11,20 @@ import ContactScreen from './Screens/ContactScreen/ContactScreen';
 import DashboardScreen from './Screens/DashboardScreen/DashboardScreen';
 import DashboardBedroomsScreen from './Screens/DashboardBedroomsScreen/DashboardBedroomsScreen';
 import FavoriteScreen from './Screens/FavoriteScreen/FavoriteScreen';
-import { Context } from "./Context/AuthContext";
 
 function Router() {
-
-    const { user, isAuthenticated } = useContext(Context)
 
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomeScreen />} />
                 <Route path="/quarto/:quartoId" element={<RoomScreen />} />
-                <Route path="/quartos/:page" element={<RoomsListScreen />} />
+                <Route path="/quartos/:orderBy" element={<RoomsListScreen />} />
                 <Route path="/passwordReset/:userId/:token" element={<PasswordResetScreen />} />
                 <Route path="/about" element={<AboutScreen />} />
                 <Route path="/contact" element={<ContactScreen />} />
-                <Route path="/dashboard/users" element={<DashboardScreen />} />
-                <Route path="/dashboard/bedrooms" element={<DashboardBedroomsScreen />} />
+                <Route path="/dashboard/users/:page" element={<DashboardScreen />} />
+                <Route path="/dashboard/bedrooms/:page" element={<DashboardBedroomsScreen />} />
                 <Route path="/login" element={<SignInScreen />} />
                 <Route path="/register" element={<SignUpScreen />} />
                 <Route path="/favorites" element={<FavoriteScreen />} />

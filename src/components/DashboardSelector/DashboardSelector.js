@@ -23,9 +23,9 @@ function DashboardSelector() {
                 </div>
                 <div className='ul'>
                     <hr />
-                    <Link to="/dashboard/users"><div className='li'>Users</div></Link>
+                    <Link to="/dashboard/users/page=1"><div className='li'>Users</div></Link>
                     <hr />
-                    <Link to="/dashboard/bedrooms"><div className='li'>Bedrooms</div></Link>
+                    <Link to="/dashboard/bedrooms/page=1"><div className='li'>Bedrooms</div></Link>
                     <hr />
                 </div>
             </div >

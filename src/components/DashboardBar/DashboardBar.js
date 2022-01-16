@@ -9,8 +9,8 @@ function DashboardBar() {
             <div className='dashboardLine'>
                 <p class="admTxt">PelourinhoAdministration</p>
                 <div className='responsiveBar'>
-                    <Link to="/dashboard/users"><p className='txtbar'>Users</p></Link>
-                    <Link to="/dashboard/Bedrooms"><p className='txtbar'>Bedrooms</p></Link>
+                    <Link to="/dashboard/users/page=1"><p className='txtbar'>Users</p></Link>
+                    <Link to="/dashboard/Bedrooms/page=1"><p className='txtbar'>Bedrooms</p></Link>
                 </div>
                 <div class="dropdown">
                     <button class="dropbtn">Settings</button>
