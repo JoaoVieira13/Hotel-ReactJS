@@ -29,7 +29,7 @@ function CreateUser() {
                 .then(function (response) {
                     console.log(response.data)
                     toast.success("User Created!")
-                    setTimeout(() => window.location.pathname = "/dashboard/users", 3000);
+                    setTimeout(() => window.location.pathname = "/dashboard/users/page=1", 3000);
                 })
                 .catch(function (err) {
                     console.log(err)

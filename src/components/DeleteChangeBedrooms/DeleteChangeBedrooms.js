@@ -66,9 +66,9 @@ function DeleteChangeBedrooms({ bedroomId }) {
             />
             <div className='doubleButton'>
                 <form>
-                    <button className='deleteBedroom' type='submit' onClick={(() => api.delete(`/quartos/quarto/${bedroomId}`))} >Delete</button>
+                    <button data-testid="deleteBedroom" className='deleteBedroom' type='submit' onClick={(() => api.delete(`/quartos/quarto/${bedroomId}`))} >Delete</button>
                 </form>
-                <button className='changeBedroom' onClick={handleOpen}>Change</button>
+                <button data-testid="test" className='changeBedroom' onClick={handleOpen}>Change</button>
                 <Modal
                     open={open}
                     onClose={handleClose}
@@ -98,7 +98,7 @@ function DeleteChangeBedrooms({ bedroomId }) {
                                         <option value="In-Room Meals">In-Room Meals</option>
                                         <option value="None">None</option>
                                     </select>
-                                    <button type="submit" className='updateBedroomData'>Change</button>
+                                    <button type="submit" className='updateBedroomData' data-testid="changeBedroom">Change</button>
                                 </div>
                             </form>
                         </Typography>

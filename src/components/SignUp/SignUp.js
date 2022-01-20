@@ -93,7 +93,7 @@ function SignUp() {
                             <input placeholder="Password" name="confirmPassword" type="password" {...register('confirmPassword')} className={`signUpInputs ${errors.confirmPassword ? 'is-invalid' : ''}`} />
                             <span className="invalid-feedback">{errors.confirmPassword?.message}</span>
                             <input className="signUpFile" type="file" {...register("images", { required: true })} />
-                            <span><Link to="/login">You already have account?</Link></span>
+                            <span><Link to="/login" data-testid="butt">You already have account?</Link></span>
                             <button className="signUpSubmit">Register</button>
                         </form>
                     </div>

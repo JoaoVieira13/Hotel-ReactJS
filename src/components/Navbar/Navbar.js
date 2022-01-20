@@ -63,7 +63,7 @@ const Navbar = () => {
         <>
             <div className="optionsMenu">
                 <div className="flexMenuItems">
-                    <Link to="/" className="nameMenu" >PelourinhoHotel</Link>
+                    <Link to="/" className="nameMenu">PelourinhoHotel</Link>
                     {['Menu'].map((anchor) => (
                         <React.Fragment key={anchor}>
                             <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
@@ -79,7 +79,7 @@ const Navbar = () => {
                 </div>
             </div>
             <div className="right">
-                <Link to="/" className="name" >PelourinhoHotel</Link>
+                <Link to="/" className="name">PelourinhoHotel</Link>
                 <div className="options">
                     <Link to="/">Home</Link>
                     <Link to="/about">About</Link>

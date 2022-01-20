@@ -6,7 +6,7 @@ function NotAuthenticatedError() {
         <div className='ErrorPic'>
             <div id="containerZ">
 
-                <div class="toph"><h1 className='warning'>ERROR </h1><h1 class="number">403</h1></div>
+                <div class="toph"><h1 className='warning' data-testid="error">ERROR</h1><h1 class="number">403</h1></div>
 
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1278 1080" className='svgZ'>
                     <defs>

@@ -31,7 +31,7 @@ function CreateBedrooms() {
                 .post(`/quartos/add`, createBedroom)
                 .then(function (response) {
                     toast.success("Bedroom Created!")
-                    setTimeout(() => window.location.pathname = "/dashboard/bedrooms", 3000);
+                    setTimeout(() => window.location.pathname = "/dashboard/bedrooms/page=1", 3000);
                 })
                 .catch(function (err) {
                     toast.error("Error Creating Bedroom!")
